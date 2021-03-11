@@ -6,7 +6,7 @@
 /*   By: alero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/10 12:07:33 by alero             #+#    #+#             */
-/*   Updated: 2021/03/08 17:13:42 by alero            ###   ########.fr       */
+/*   Updated: 2021/03/08 17:27:08 by alero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ char			*ft_pii(int size)
 {
 	t_pii	pii;
 	char	*a;
-	char	*oldout;
 
 	if (!(pii.r = (int *)ft_memalloc((size + 1) * sizeof(int))))
 		return (NULL);
@@ -52,7 +51,6 @@ char			*ft_pii(int size)
 		pii.i = pii.k;
 		pii = ft_pii_pt2(pii);
 		a = ft_itoa(pii.c + pii.d / 10000);
-		oldout = pii.out;
 		pii.out = ft_strjoin(pii.out, a);
 		pii.c = pii.d % 10000;
 		pii.k = pii.k - 14;
