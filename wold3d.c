@@ -12,6 +12,9 @@ typedef	struct			s_struct
 	int		y;
 }						t_struct;
 
+/*
+ *	Simple 2d char array printer using prinf
+ */
 void	ft_print2dcarr(char **arr)
 {
 	int i;
@@ -25,6 +28,10 @@ void	ft_print2dcarr(char **arr)
 	}
 }
 
+/*
+ *	Skips ',' and ' ' characters,
+ *	puts rest to ret, up to x(max widht of map)
+ */
 char	*linetogrid(char *ret, char *out, int x)
 {
 	int a;
@@ -45,6 +52,12 @@ char	*linetogrid(char *ret, char *out, int x)
 	return(ret);
 }
 
+/*
+ *	The second redthrough of map file.
+ *	Goes through file line by line,
+ *	and builds final array with
+ *	linetogrid()
+ */
 int			readmap(char *str, t_struct *s)
 {
 	int		fd;
@@ -70,6 +83,12 @@ int			readmap(char *str, t_struct *s)
 
 }
 
+/*
+ *	The first read of map file.
+ *	This function determines map.x and map.y.
+ *	Y rows are counted by gnl,
+ *	X is counted by the nro ',' on the row.
+ */
 int		checkmap(char *str, t_struct *s)
 {
 	int		fd;
@@ -94,8 +113,12 @@ int		checkmap(char *str, t_struct *s)
 	return (0);
 }
 
-
-
+/*
+ *	Allocates 2d character array,
+ *	based  on map.x and map.y.
+ *	Each row is zeroed,
+ *	terminators are placed.
+ */
 int		initmap(t_struct *s)
 {
 	int i;
@@ -112,6 +135,11 @@ int		initmap(t_struct *s)
 	return(0);
 }
 
+/*
+ *	Simple mother function for
+ *	commanding the seperate map
+ *	reading functions.
+ */
 int			buildmap(char *str, t_struct *s)
 {
 	checkmap(str, s);
@@ -122,13 +150,11 @@ int			buildmap(char *str, t_struct *s)
 
 int			main(int argc, char** argv)
 {
-	printf("alku\n");
 	t_struct	s;
+
 	ft_memset(&s, 0, sizeof(s));
 	buildmap(argv[1], &s);
-	printf("x = %d\ty = %d\n\n", s.x, s.y);
 	ft_print2dcarr(s.map);
 	free(s.map);
-	printf("\nloppu\n");
 	return (1);
 }
