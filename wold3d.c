@@ -39,10 +39,11 @@ char	*linetogrid(char *ret, char *out, int x)
 
 	i = 0;
 	a = 0;
-
-	while (i < x)
+	if(ret == NULL || out == NULL)
+		return(0);
+	while (i < x && out[a != '\0'])
 	{
-		if(out[a] != ',' && out[a] != ' ')
+		if(out[a] != ',' && out[a] != ' ' )
 		{
 			ret[i] = out[a];
 			i++;
