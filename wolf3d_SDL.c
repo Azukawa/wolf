@@ -1,4 +1,3 @@
-#include "SDL/include/SDL.h"
 #include "wolf.h"
 
 #include "Libft/inc/libft.h"
@@ -66,11 +65,9 @@ int			readmap(char *str, t_struct *s)
 	int		fd;
 	int		ret;
 	int		i;
-	int		a;
 	char*	output;
 
 	i = 0;
-	a = 0;
 	output = NULL;
 	
 	if ((fd = open(str, O_RDONLY)) == -1)
@@ -189,7 +186,7 @@ int			main(int argc, char** argv)
 
 	initSDL(app);
 
-	buildmap(argv[1], &s);
+	buildmap(argv[argc - 1], &s);
 	ft_print2dcarr(s.map);
 	free(s.map);
 	cleanup(app);
