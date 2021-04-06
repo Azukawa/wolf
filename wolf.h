@@ -1,7 +1,7 @@
 #ifndef WOLF_H
 # define WOLF_H
 
-#include <SDL2/SDL.h>
+#include "libSDL2/include/SDL2/SDL.h"
 
 typedef struct s_app {
 	SDL_Renderer	*renderer;
