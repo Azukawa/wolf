@@ -1,4 +1,4 @@
-//#include "SDL/include/SDL.h"
+#include "SDL/include/SDL.h"
 #include "wolf.h"
 
 #include "Libft/inc/libft.h"
@@ -66,9 +66,12 @@ int			readmap(char *str, t_struct *s)
 	int		fd;
 	int		ret;
 	int		i;
+	int		a;
 	char*	output;
 
-
+	i = 0;
+	a = 0;
+	output = NULL;
 	
 	if ((fd = open(str, O_RDONLY)) == -1)
 		return(0);
@@ -181,8 +184,6 @@ int			main(int argc, char** argv)
 	t_struct	s;
 	t_app		app;
 
-	if (argc != 2)
-		printf("Wrong number of arguments.\n");
 	ft_memset(&app, 0, sizeof(app));
 	ft_memset(&s, 0, sizeof(s));
 	initSDL(&app);
