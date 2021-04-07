@@ -7,12 +7,12 @@
 #include <unistd.h>
 #include <fcntl.h>
 
-typedef	struct			s_struct
+typedef	struct			s_map
 {
 	char	**map;
 	int		x;
 	int		y;
-}						t_struct;
+}						t_map;
 
 /*
  *	Simple 2d char array printer using prinf
@@ -61,7 +61,7 @@ char	*linetogrid(char *ret, char *out, int x)
  *	and builds final array with
  *	linetogrid()
  */
-int			readmap(char *str, t_struct *s)
+int			readmap(char *str, t_map *s)
 {
 	int		fd;
 	int		ret;
@@ -89,7 +89,7 @@ int			readmap(char *str, t_struct *s)
  *	Y rows are counted by gnl,
  *	X is counted by the nro ',' on the row.
  */
-int		checkmap(char *str, t_struct *s)
+int		checkmap(char *str, t_map *s)
 {
 	int		fd;
 	int		ret;
@@ -119,7 +119,7 @@ int		checkmap(char *str, t_struct *s)
  *	Each row is zeroed,
  *	terminators are placed.
  */
-int		initmap(t_struct *s)
+int		initmap(t_map *s)
 {
 	int i;
 	i = 0;
@@ -140,7 +140,7 @@ int		initmap(t_struct *s)
  *	commanding the seperate map
  *	reading functions.
  */
-int			buildmap(char *str, t_struct *s)
+int			buildmap(char *str, t_map *s)
 {	
 	if (str == NULL)
 	{
@@ -183,7 +183,7 @@ void	cleanup(t_app *app)
 
 int			main(int argc, char** argv)
 {
-	t_struct	s;
+	t_map	s;
 	t_app		app;
 
 	if (argc != 2)
