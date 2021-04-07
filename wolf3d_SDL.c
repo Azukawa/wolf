@@ -68,7 +68,7 @@ int			readmap(char *str, t_struct *s)
 	int		i;
 	char*	output;
 
-
+	i = 0;
 	
 	if ((fd = open(str, O_RDONLY)) == -1)
 		return(0);
@@ -141,11 +141,16 @@ int		initmap(t_struct *s)
  *	reading functions.
  */
 int			buildmap(char *str, t_struct *s)
-{
+{	
+	if (str == NULL)
+	{
+		printf("No path given, map building is skipped.\n");
+		return(0);
+	}
 	checkmap(str, s);
 	initmap(s);
 	readmap(str, s);
-	return (0);
+	return (1);
 }
 
 void	initSDL(t_app *app)
@@ -188,14 +193,13 @@ int			main(int argc, char** argv)
 	initSDL(&app);
 	buildmap(argv[1], &s);
 	ft_print2dcarr(s.map);
-
 	app.screenSurface = SDL_GetWindowSurface( app.window );
-	SDL_FillRect(app.screenSurface, NULL, SDL_MapRGB( app.screenSurface->format, 0x00, 0xFF, 0xFF ) );
-	SDL_UpdateWindowSurface( app.window );
+	SDL_FillRect(app.screenSurface, NULL, SDL_MapRGB(app.screenSurface->format, 0x00, 0xFF, 0xFF));
+	SDL_UpdateWindowSurface(app.window);
 	SDL_Delay(3000);
 	SDL_DestroyWindow(app.window);
 	cleanup(&app);
 	free(s.map);
-	printf("444\n");
+	printf("Ran untill end\n");
 	return (1);
 }
