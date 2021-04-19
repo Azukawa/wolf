@@ -15,6 +15,11 @@ typedef struct		s_app
 	SDL_Renderer	*renderer;
 	SDL_Window		*window;
 	SDL_Surface 	*screenSurface;
+	SDL_Texture		*texture;
+	char			*buffer;
+	int				*tex;
+	int				run;
+	int				tex_pitch;
 }					t_app;
 
 typedef	struct		s_map
@@ -24,7 +29,7 @@ typedef	struct		s_map
 	int				y;
 }					t_map;
 
-# define SCREEN_WIDTH 1280
-# define SCREEN_HEIGHT 720
+# define SCREEN_WIDTH 600
+# define SCREEN_HEIGHT 400
 
 #endif

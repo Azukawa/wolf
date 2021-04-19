@@ -66,7 +66,7 @@ int			readmap(char *str, t_map *s)
 		i++;
 		free(output);
 	}
-	free(output);
+//	free(output);
 	return(1);
 
 }
@@ -86,7 +86,6 @@ int		checkmap(char *str, t_map *s)
 
 	i = 0;
 	output = NULL;
-	
 	if ((fd = open(str, O_RDONLY)) == -1)
 		return(0);
 	while ((ret = get_next_line(fd, &output)) > 0)
@@ -97,7 +96,7 @@ int		checkmap(char *str, t_map *s)
 		free(output);
 	}
 	s->y = i;
-	free(output);
+//	free(output);
 	return (0);
 }
 
@@ -151,16 +150,19 @@ void	initSDL(t_app *app)
 	app->window = NULL;
 	app->screenSurface = NULL;
 	app->renderer = NULL;
-
+	app->buffer = ft_memalloc(SCREEN_WIDTH * SCREEN_HEIGHT * 4);
 	if (SDL_Init(SDL_INIT_VIDEO) != 0)
-		exit(printf("XXXXXcouldn't initialize SDL: %s\n", SDL_GetError()));
+		exit(ft_printf("couldn't initialize SDL: %s\n", SDL_GetError()));
 	if (!(app->window = SDL_CreateWindow("Testgame01", SDL_WINDOWPOS_UNDEFINED,
 	SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, windowFlags)))
-		exit(printf("failed to open %d x %d window %s\n", SCREEN_WIDTH,
+		exit(ft_printf("failed to open %d x %d window %s\n", SCREEN_WIDTH,
 		SCREEN_HEIGHT, SDL_GetError()));
 	SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "linear");
 	if (!(app->renderer = SDL_CreateRenderer(app->window, -1, renderFlags)))
-		exit(printf("Failed to create renderer: %s\n", SDL_GetError()));
+		exit(ft_printf("Failed to create renderer: %s\n", SDL_GetError()));
+	if(!(app->texture = SDL_CreateTexture(app->renderer, SDL_PIXELFORMAT_RGBA8888, SDL_TEXTUREACCESS_STREAMING, SCREEN_WIDTH, SCREEN_HEIGHT)))
+		exit(ft_printf("Failed to create texture: %s\n", SDL_GetError()));
+
 }
 
 /*void			free2darr(t_map *map)
@@ -177,12 +179,25 @@ void	initSDL(t_app *app)
 
 void	cleanup(t_app *app)
 {
-	printf("555, %p\n", app->renderer);
 	SDL_DestroyRenderer(app->renderer);
-	printf("666\n");
 	SDL_DestroyWindow(app->window);
-	printf("777\n");
 }
+
+//todo check if color should be unsigned int
+//todo check endian for correct colors
+void		drawpix2buf(float x, float y, char *buffer, int color)
+{
+	int	i;
+	i = ((int)x + SCREEN_WIDTH * (int)y) * 4;
+	if (x < SCREEN_WIDTH && y < SCREEN_HEIGHT &&  x >= 0 && y >= 0)
+	{
+		buffer[0 + i] = (color >> 24);
+		buffer[1 + i] = (color) & 0xFF;
+		buffer[2 + i] = (color >> 8) & 0xFF;
+		buffer[3 + i] = (color >> 16) & 0xFF;
+	}
+}
+
 
 void		drawmap(t_map *map, t_app *app)
 {	
@@ -192,19 +207,15 @@ void		drawmap(t_map *map, t_app *app)
 	x = y = 0;
 	square_x = SCREEN_WIDTH / map->x;
 	square_y = SCREEN_HEIGHT / map->y;
-	SDL_SetRenderDrawColor(app->renderer, 0, 0, 0, 0);
-	SDL_RenderClear(app->renderer);
-	SDL_SetRenderDrawColor(app->renderer, 255, 0, 0, 255);
 	printf("mapx=%d\nmapy=%d\n", map->x, map->y);
 	while(y < SCREEN_HEIGHT)
 	{	
 		while(x < SCREEN_WIDTH)
 		{
 			if (map->map[y / square_y][ x / square_x] == '0')
-				SDL_SetRenderDrawColor(app->renderer, 255, 255, 255, 255);
+				drawpix2buf(x, y, app->buffer, 0xFFFFFF);
 			else
-				SDL_SetRenderDrawColor(app->renderer, 0, 0, 0, 0);
-			SDL_RenderDrawPoint(app->renderer, x, y);
+				drawpix2buf(x, y, app->buffer, 0x000000);
 			x++;
 		}
 		x = 0;
@@ -221,6 +232,7 @@ int			main(int argc, char** argv)
 		ft_printf("Wrong number of arguments.\n");
 	s = ft_memalloc(sizeof(app));
 	app = ft_memalloc(sizeof(app));
+	app->run = 1;
 	ft_memset(app, 0, sizeof(app));
 	ft_memset(s, 0, sizeof(s));
 	initSDL(app);
@@ -230,16 +242,22 @@ int			main(int argc, char** argv)
 	ft_print2dcarr(s->map);
 	ft_printf("zzz\n");
 	app->screenSurface = SDL_GetWindowSurface(app->window);
-	drawmap(s, app);
+		while(app->run)
+		{
+			drawmap(s, app);
+			if(SDL_LockTexture(app->texture, NULL, (void **)&app->tex, &app->tex_pitch) < 0)
+				app->run = 0;
+			ft_memcpy(app->tex, app->buffer, SCREEN_HEIGHT * SCREEN_WIDTH * 4);
+			SDL_UnlockTexture(app->texture);
+			if (SDL_RenderCopy(app->renderer, app->texture, NULL, NULL) < 0)
+				app->run = 0;
+			SDL_RenderPresent(app->renderer);		
+			app->run = 0;
+		}
 	ft_printf("111\n");
 	SDL_RenderPresent(app->renderer);
 	SDL_Delay(3000);
 	ft_printf("2222\n");
-//	free2darr(&s);
-//	int i = 0;
-//	while(i < s.y)
-//		free(s.map[i++]);
-//	free(s.map);
 	cleanup(app);
 
 	//ft_free_arr(s->map);
