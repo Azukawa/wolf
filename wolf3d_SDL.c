@@ -1,19 +1,6 @@
 //#include "SDL/include/SDL.h"
 #include "wolf.h"
 
-#include "Libft/inc/libft.h"
-#include <stdio.h>
-#include <math.h>
-#include <unistd.h>
-#include <fcntl.h>
-
-typedef	struct			s_map
-{
-	char	**map;
-	int		x;
-	int		y;
-}						t_map;
-
 /*
  *	Simple 2d char array printer using prinf
  */
@@ -25,7 +12,7 @@ void	ft_print2dcarr(char **arr)
 		return ;
 	while(arr[i][0] != '\0')
 	{
-		printf("row%d =\t\t%s\n", i, arr[i]);
+		ft_printf("row%d =\t\t%s\n", i, arr[i]);
 		i++;
 	}
 }
@@ -104,8 +91,8 @@ int		checkmap(char *str, t_map *s)
 		return(0);
 	while ((ret = get_next_line(fd, &output)) > 0)
 	{
-		if(ft_countwords(output, ',') > s->x)
-			s->x = ft_countwords(output, ',');
+		if(ft_wordcount(output, ',') > (size_t)s->x)
+			s->x = ft_wordcount(output, ',');
 		i++;
 		free(output);
 	}
@@ -148,7 +135,7 @@ int			buildmap(char *str, t_map *s)
 {	
 	if (str == NULL)
 	{
-		printf("No path given, map building is skipped.\n");
+		ft_printf("No path given, map building is skipped.\n");
 		return(0);
 	}
 	checkmap(str, s);
@@ -176,7 +163,7 @@ void	initSDL(t_app *app)
 		exit(printf("Failed to create renderer: %s\n", SDL_GetError()));
 }
 
-void			free2darr(t_map *map)
+/*void			free2darr(t_map *map)
 {
 	int y;
 	y = 0;
@@ -186,7 +173,7 @@ void			free2darr(t_map *map)
 		y++;
 	}
 	free(map->map);
-}
+}*/
 
 void	cleanup(t_app *app)
 {
@@ -227,33 +214,40 @@ void		drawmap(t_map *map, t_app *app)
 
 int			main(int argc, char** argv)
 {
-	t_map		s;
-	t_app		app;
+	t_map		*s;
+	t_app		*app;
 
 	if (argc != 2)
-		printf("Wrong number of arguments.\n");
-	ft_memset(&app, 0, sizeof(app));
-	ft_memset(&s, 0, sizeof(s));
-	initSDL(&app);
-	printf("xxx\n");
-	buildmap(argv[1], &s);
-	printf("yyy\n");
-	ft_print2dcarr(s.map);
-	printf("zzz\n");
-	app.screenSurface = SDL_GetWindowSurface(app.window);
-	drawmap(&s, &app);
-	printf("111\n");
-	SDL_RenderPresent(app.renderer);
+		ft_printf("Wrong number of arguments.\n");
+	s = ft_memalloc(sizeof(app));
+	app = ft_memalloc(sizeof(app));
+	ft_memset(app, 0, sizeof(app));
+	ft_memset(s, 0, sizeof(s));
+	initSDL(app);
+	ft_printf("xxx\n");
+	buildmap(argv[1], s);
+	ft_printf("yyy\n");
+	ft_print2dcarr(s->map);
+	ft_printf("zzz\n");
+	app->screenSurface = SDL_GetWindowSurface(app->window);
+	drawmap(s, app);
+	ft_printf("111\n");
+	SDL_RenderPresent(app->renderer);
 	SDL_Delay(3000);
-	printf("2222\n");
+	ft_printf("2222\n");
 //	free2darr(&s);
 //	int i = 0;
 //	while(i < s.y)
 //		free(s.map[i++]);
 //	free(s.map);
-//	cleanup(&app);
+	cleanup(app);
+
+	//ft_free_arr(s->map);
+	free(s);
+	free(app);
+
 	printf("3333\n");
-	SDL_DestroyWindow(app.window);
+	//SDL_DestroyWindow(app->window);
 	printf("Ran untill end\n");
 	return (1);
 }
