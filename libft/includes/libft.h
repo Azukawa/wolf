@@ -6,7 +6,7 @@
 /*   By: eniini <eniini@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/10 16:37:48 by eniini            #+#    #+#             */
-/*   Updated: 2021/04/04 00:06:02 by eniini           ###   ########.fr       */
+/*   Updated: 2021/04/22 17:50:31 by eniini           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,9 @@ void			ft_putstr_fd(char const *s, int fd);
 void			ft_putendl_fd(char const *s, int fd);
 void			ft_putnbr_fd(int n, int fd);
 
+int				ft_printf(const char *s, ...);
+int				ft_fprintf(const int fd, const char *s, ...);
+
 int				get_next_line(const int fd, char **line);
 
 /*
@@ -120,7 +123,6 @@ void			*ft_memccpy(void *dst, const void *src, int c, size_t n);
 void			ft_memdel(void **ap);
 void			*ft_memmove(void *dst, const void *src, size_t len);
 void			*ft_memset(void *b, int c, size_t len);
-void			*ft_realloc(void *ptr, size_t size);
 void			ft_swap(void *a, void *b, size_t size);
 
 /*
@@ -133,24 +135,24 @@ void			ft_getout(const char *str);
 **	String manipulation/examination
 */
 
-char			*ft_strcat(char *s1, const char *s2);
+char			*ft_strcat(char *a, const char *b);
 size_t			ft_strlcat(char *dst, const char *src, size_t dstsize);
-char			*ft_strncat(char *s1, const char *s2, size_t n);
+char			*ft_strncat(char *a, const char *b, size_t n);
 char			*ft_strchr(const char *s, int c);
 char			*ft_strrchr(const char *s, int c);
 void			ft_strclr(char *s);
-int				ft_strcmp(const char *s1, const char *s2);
-int				ft_strncmp(const char *s1, const char *s2, size_t n);
+int				ft_strcmp(const char *a, const char *b);
+int				ft_strncmp(const char *a, const char *b, size_t n);
 char			*ft_strcpy(char *dst, const char *src);
 char			*ft_strncpy(char *dst, const char *src, size_t len);
 void			ft_strdel(char **as);
 char			*ft_strdup(const char *s1);
 char			*ft_strndup(const char *s1, size_t n);
-int				ft_strequ(char const *s1, char const *s2);
-int				ft_strnequ(char const *s1, char const *s2, size_t n);
+int				ft_strequ(char const *a, char const *b);
+int				ft_strnequ(char const *a, char const *b, size_t n);
 void			ft_striter(char *s, void (*f)(char *));
 void			ft_striteri(char *s, void (*f)(unsigned int, char *));
-char			*ft_strjoin(char const *s1, char const *s2);
+char			*ft_strjoin(char const *a, char const *b);
 size_t			ft_strlen(const char *s);
 char			*ft_strmap(char const *s, char (*f)(char));
 char			*ft_strmapi(char const *s, char (*f)(unsigned int, char));
@@ -172,8 +174,8 @@ void			ft_putwstr(wchar_t *wstr, int fd);
 
 int				ft_wcharlen(wint_t wc);
 
-size_t			ft_wstrlen(wchar_t *wstr);
-size_t			ft_wstrnlen(wchar_t *wstr, size_t n);
+size_t			ft_wstrlen(const wchar_t *wstr);
+size_t			ft_wstrnlen(const wchar_t *wstr, size_t n);
 
 /*
 **	Type conversions

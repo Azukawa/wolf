@@ -6,7 +6,7 @@
 /*   By: eniini <eniini@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/19 15:34:27 by eniini            #+#    #+#             */
-/*   Updated: 2021/03/30 16:36:13 by eniini           ###   ########.fr       */
+/*   Updated: 2021/04/20 12:00:35 by eniini           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 **	Generalized datatype to use with linked list functions.
 */
 
-typedef struct		s_list
+typedef struct s_list
 {
 	void			*content;
 	size_t			content_size;

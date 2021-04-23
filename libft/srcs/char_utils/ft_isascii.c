@@ -6,11 +6,11 @@
 /*   By: eniini <eniini@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/15 20:24:51 by eniini            #+#    #+#             */
-/*   Updated: 2020/07/16 13:30:32 by eniini           ###   ########.fr       */
+/*   Updated: 2021/04/20 12:39:33 by eniini           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_isascii(int c)
+int	ft_isascii(int c)
 {
 	if (c >= 0 && c <= 127)
 		return (1);

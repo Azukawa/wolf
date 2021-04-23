@@ -6,7 +6,7 @@
 /*   By: eniini <eniini@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/08 16:28:18 by eniini            #+#    #+#             */
-/*   Updated: 2020/10/16 09:11:58 by eniini           ###   ########.fr       */
+/*   Updated: 2021/04/20 14:03:12 by eniini           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,10 @@
 
 t_list	*ft_lstnew(void const *content, size_t content_size)
 {
-	t_list *new;
+	t_list	*new;
 
-	if (!(new = (t_list*)malloc(sizeof(t_list))))
+	new = (t_list *)malloc(sizeof(t_list));
+	if (!new)
 		return (NULL);
 	if (!content)
 	{
@@ -33,7 +34,8 @@ t_list	*ft_lstnew(void const *content, size_t content_size)
 	}
 	else
 	{
-		if (!(new->content = (void*)malloc(content_size)))
+		new->content = (void *)malloc(content_size);
+		if (!new->content)
 		{
 			free(new);
 			return (NULL);

@@ -3,8 +3,7 @@
 
 # include "../SDL2-2.0.14/include/SDL.h"
 
-# include "../libft/includes/libft.h"
-# include "../ftprintf/includes/ft_printf.h"
+# include "libft.h"
 
 # include <math.h>
 # include <fcntl.h>

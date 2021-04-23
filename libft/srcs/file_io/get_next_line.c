@@ -6,7 +6,7 @@
 /*   By: eniini <eniini@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/04 12:03:57 by eniini            #+#    #+#             */
-/*   Updated: 2020/10/16 09:23:23 by eniini           ###   ########.fr       */
+/*   Updated: 2021/04/20 13:26:37 by eniini           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,16 +49,19 @@ static int	getlinebreak(char **line, char **str)
 		len++;
 	if ((*str)[len] == '\n')
 	{
-		if (!(*line = ft_strsub(*str, 0, len)))
+		*line = ft_strsub(*str, 0, len);
+		if (*line == NULL)
 			return (-1);
-		if (!(temp = ft_strdup(*str + len + 1)))
+		temp = ft_strdup(*str + len + 1);
+		if (!temp)
 			return (-1);
 		free(*str);
 		*str = temp;
 	}
 	else
 	{
-		if (!(*line = ft_strdup(*str)))
+		*line = ft_strdup(*str);
+		if (*line == NULL)
 			return (-1);
 		ft_strdel(str);
 	}
@@ -74,15 +77,11 @@ static char	*getstr(const int fd, char **str, char *buffer)
 	char		*temp;
 
 	if (str[fd])
-	{
-		if (!(temp = ft_strjoin(str[fd], buffer)))
-			return (NULL);
-	}
+		temp = ft_strjoin(str[fd], buffer);
 	else
-	{
-		if (!(temp = ft_strdup(buffer)))
-			return (NULL);
-	}
+		temp = ft_strdup(buffer);
+	if (!temp)
+		return (NULL);
 	free(str[fd]);
 	return (temp);
 }
@@ -93,21 +92,26 @@ static char	*getstr(const int fd, char **str, char *buffer)
 **	In case of EOF, all stored buffers are given to getlinebreak function.
 */
 
-int			get_next_line(const int fd, char **line)
+int	get_next_line(const int fd, char **line)
 {
-	static char *str[FD_MAX];
+	static char	*str[FD_MAX];
 	char		buffer[BUFF_SIZE + 1];
 	ssize_t		readbytes;
 	char		*temp;
 
 	if (fd < 0 || !line || BUFF_SIZE < 0)
 		return (-1);
-	while ((readbytes = read(fd, buffer, BUFF_SIZE)) > 0)
+	while (1)
 	{
+		readbytes = read(fd, buffer, BUFF_SIZE);
+		if (readbytes <= 0)
+			break ;
 		buffer[readbytes] = '\0';
-		if (!(str[fd] = getstr(fd, str, buffer)))
+		str[fd] = getstr(fd, str, buffer);
+		if (!str[fd])
 			return (-1);
-		if ((temp = ft_strchr(str[fd], '\n')))
+		temp = ft_strchr(str[fd], '\n');
+		if (temp)
 			break ;
 	}
 	if (readbytes < 0)

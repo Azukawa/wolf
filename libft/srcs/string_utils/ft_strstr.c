@@ -6,7 +6,7 @@
 /*   By: eniini <eniini@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/30 16:25:12 by eniini            #+#    #+#             */
-/*   Updated: 2020/10/16 09:22:21 by eniini           ###   ########.fr       */
+/*   Updated: 2021/04/20 14:33:28 by eniini           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,14 @@ char	*ft_strstr(const char *haystack, const char *needle)
 
 	i = 0;
 	if (needle[0] == '\0')
-		return ((char*)&haystack[0]);
+		return ((char *)&haystack[0]);
 	while (*haystack != '\0')
 	{
 		i = 0;
 		while (*(haystack + i) == *(needle + i))
 		{
-			if ((*(needle + i + 1) == '\0') && (*(haystack + i) ==
-				*(needle + i)))
+			if ((*(needle + i + 1) == '\0') && (*(haystack + i)
+					== *(needle + i)))
 				return ((char *)haystack);
 			i++;
 		}

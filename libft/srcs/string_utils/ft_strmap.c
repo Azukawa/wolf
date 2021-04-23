@@ -6,7 +6,7 @@
 /*   By: eniini <eniini@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/23 10:21:18 by eniini            #+#    #+#             */
-/*   Updated: 2020/10/16 09:18:38 by eniini           ###   ########.fr       */
+/*   Updated: 2021/04/20 14:21:37 by eniini           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ char	*ft_strmap(char const *s, char (*f)(char))
 	if (!s || !f)
 		return (NULL);
 	i = 0;
-	if (!(ret = (char*)malloc(sizeof(char) * (ft_strlen(s) + 1))))
+	ret = (char *)malloc(sizeof(char) * (ft_strlen(s) + 1));
+	if (!ret)
 		return (NULL);
 	while (s[i] != '\0')
 	{

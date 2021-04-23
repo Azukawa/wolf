@@ -6,13 +6,13 @@
 /*   By: eniini <eniini@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/15 20:24:04 by eniini            #+#    #+#             */
-/*   Updated: 2020/06/17 12:29:06 by eniini           ###   ########.fr       */
+/*   Updated: 2021/04/20 12:38:17 by eniini           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_isalnum(int c)
+int	ft_isalnum(int c)
 {
 	if ((ft_isalpha(c) == 1) || (ft_isdigit(c) == 1))
 		return (1);

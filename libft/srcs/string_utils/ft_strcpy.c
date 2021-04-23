@@ -6,7 +6,7 @@
 /*   By: eniini <eniini@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/30 12:26:32 by eniini            #+#    #+#             */
-/*   Updated: 2020/10/16 09:16:42 by eniini           ###   ########.fr       */
+/*   Updated: 2021/04/20 14:28:55 by eniini           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 
 char	*ft_strcpy(char *dst, const char *src)
 {
-	size_t i;
+	size_t	i;
 
 	i = 0;
 	while (src[i] != '\0')

@@ -6,7 +6,7 @@
 /*   By: eniini <eniini@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/29 10:02:03 by eniini            #+#    #+#             */
-/*   Updated: 2021/03/29 10:45:35 by eniini           ###   ########.fr       */
+/*   Updated: 2021/04/20 15:21:31 by eniini           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,11 @@
 
 static void	write_utf8(wint_t c, int size, int fd)
 {
-	unsigned char	tmp[size];
+	unsigned char	*tmp;
 
+	tmp = (unsigned char *)malloc(sizeof(unsigned char) * size);
+	if (!tmp)
+		return ;
 	if (size == 4)
 		tmp[0] = ((c >> 18) & 0x07) | 0xF0;
 	if (size == 4)
@@ -43,13 +46,14 @@ static void	write_utf8(wint_t c, int size, int fd)
 		tmp[size - 2] = ((c >> 6) & 0x3F) | 0x80;
 	tmp[size - 1] = (c & 0x3F) | 0x80;
 	write(fd, &tmp, size);
+	free(tmp);
 }
 
 /*
 **	Values lower than 128 are ASCII compatible so we can write them directly.
 */
 
-void		ft_putwchar(wint_t wc, int fd)
+void	ft_putwchar(wint_t wc, int fd)
 {
 	if (wc >= 0x10000)
 		write_utf8(wc, 4, fd);

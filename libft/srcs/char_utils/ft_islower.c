@@ -6,11 +6,11 @@
 /*   By: eniini <eniini@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/16 13:40:43 by eniini            #+#    #+#             */
-/*   Updated: 2020/07/16 13:47:38 by eniini           ###   ########.fr       */
+/*   Updated: 2021/04/20 12:38:40 by eniini           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_islower(int c)
+int	ft_islower(int c)
 {
 	if (c >= 'a' && c <= 'z')
 		return (1);

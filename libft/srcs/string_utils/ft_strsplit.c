@@ -6,7 +6,7 @@
 /*   By: eniini <eniini@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 14:23:57 by eniini            #+#    #+#             */
-/*   Updated: 2021/01/07 16:00:29 by eniini           ###   ########.fr       */
+/*   Updated: 2021/04/20 14:42:10 by eniini           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ static char	*ft_getstring(char const *s, char c, size_t start)
 	index = 1;
 	while (s[start + index] != c && s[start + index] != '\0')
 		index++;
-	if (!(string = ft_strsub(s, start, index)))
+	string = ft_strsub(s, start, index);
+	if (!string)
 		return (NULL);
 	return (string);
 }
@@ -36,7 +37,8 @@ static char	**ft_initsplit(char const *s, char c)
 	char	**ret;
 
 	wordcount = ft_wordcount(s, c);
-	if (!(ret = (char**)malloc(sizeof(ret) * (wordcount + 1))))
+	ret = (char **)malloc(sizeof(ret) * (wordcount + 1));
+	if (!ret)
 		return (NULL);
 	if (wordcount == 0)
 		ret[0] = NULL;
@@ -46,8 +48,8 @@ static char	**ft_initsplit(char const *s, char c)
 
 static char	**ft_dosplit(char const *s, char c, char **ret, size_t wordcount)
 {
-	size_t i;
-	size_t j;
+	size_t	i;
+	size_t	j;
 
 	i = 0;
 	j = 0;
@@ -59,7 +61,8 @@ static char	**ft_dosplit(char const *s, char c, char **ret, size_t wordcount)
 				break ;
 			i++;
 		}
-		if (!(ret[j++] = ft_getstring(s, c, i)))
+		ret[j++] = ft_getstring(s, c, i);
+		if (!ret[j])
 		{
 			ft_free_arr(ret);
 			return (NULL);
@@ -70,12 +73,13 @@ static char	**ft_dosplit(char const *s, char c, char **ret, size_t wordcount)
 	return (ret);
 }
 
-char		**ft_strsplit(char const *s, char c)
+char	**ft_strsplit(char const *s, char c)
 {
 	char	**ret;
 	size_t	wordcount;
 
-	if (!(ret = ft_initsplit(s, c)))
+	ret = ft_initsplit(s, c);
+	if (!ret)
 		return (NULL);
 	wordcount = ft_wordcount(s, c);
 	return (ft_dosplit(s, c, ret, wordcount));

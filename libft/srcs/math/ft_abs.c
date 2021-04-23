@@ -6,7 +6,7 @@
 /*   By: eniini <eniini@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/05 20:21:26 by eniini            #+#    #+#             */
-/*   Updated: 2020/10/06 13:57:40 by eniini           ###   ########.fr       */
+/*   Updated: 2021/04/20 14:08:59 by eniini           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 **	Returns the absolute value of [x]. Checks for INT_MIN to avoid overflow.
 */
 
-int		ft_abs(int n)
+int	ft_abs(int n)
 {
 	if (n < 0)
 	{

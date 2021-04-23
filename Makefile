@@ -1,13 +1,13 @@
-NAME = wolf3d
+NAME	=	wolf3d
 
 #compiler
-CC = clang
-CFLAGS = -Wall -Wextra -Werror $(LIBSDL_CFLAGS)
-#$(addprefix -I, $(INCLUDE_DIRS))
-SRC_DIR = src
-BUILD_DIR = build
-#sources
-SRC_LIST = main.c \
+CC	=	gcc
+CFLAGS	=	-Wall -Wextra -Werror
+
+#sources & object files
+SRC_DIR =	./src/
+OBJ_DIR =	./build/
+SRC_LIST =	main.c \
 		buildmap.c \
 		checkmap.c \
 		cleanup.c \
@@ -18,38 +18,45 @@ SRC_LIST = main.c \
 		initSDL.c \
 		linetogrid.c \
 		readmap.c
+SRCS = $(addprefix $(SRC_DIR),$(SRC_LIST))
+OBJS = $(addprefix $(OBJ_DIR),$(SRC_LIST:.c=.o))
 
-OBJ = $(addprefix $(BUILD_DIR)/, $(SRC_LIST:.c=.o))
-#includes
-INCLUDE_DIRS = includes/ libft/includes/
 #libft
+LIBFT = libft/libft.a
 
 #SDL2
-SOURCE_DIR = SDL2-2.0.14
-BUILD_DIR = libSDL2
-BUILD_DIR_PATH = $(CURDIR)/$(BUILD_DIR)
-LIBSDL_CFLAGS = `$(BUILD_DIR)/bin/sdl2-config --cflags --libs`
-SRC = $(addprefix $(SRC_DIR)/, $(SRC_LIST))
-.PHONY: all SDL clean fclean re
+SLD_SRC_DIR = SDL2-2.0.14
+SDL_DIR = libSDL2
+SDL_BUILD_DIR_PATH = $(CURDIR)/$(BUILD_DIR)
+SDL_CFLAGS = `$(BUILD_DIR)/bin/sdl2-config --cflags --libs`
 
-all:
+.PHONY: all clean fclean re
+
+all: $(LIBFT) $(NAME)
+
+$(OBJ_DIR)%.o:$(SRC_DIR)%.c
+	mkdir -p $(OBJ_DIR)
+	$(CC) $(CFLAGS) -Iincludes/ -Ilibft/includes -I$(SDL_DIR)/include/SDL2 -o $@ -c $<
+
+$(LIBFT):
 	make -C libft
-	make -C ftprintf
-	gcc $(SRC) include/wolf.h $(CFLAGS) -L./libft/ -lft -L./ftprintf/ -lftprintf
 
-SDL :
+$(NAME): $(OBJS)
+	$(CC) $(OBJS) $(SDL_CFLAGS) -L./libft/ -lft -o $(NAME)
+
+SDL:
 	echo "Extracting SDL archive..."
 	tar xzf SDL2-2.0.14.tar.gz
-	mkdir -p $(BUILD_DIR)
-	cd $(SOURCE_DIR); ./configure --prefix=$(BUILD_DIR_PATH); make; make install
+	mkdir -p $(SDL_DIR)
+	cd $(SDL_SRC_DIR); ./configure --prefix=$(SDL_BUILD_DIR_PATH); make; make install
 
-clean :
+clean:
 	make clean -C libft
-	make clean -C ftprintf
+	rm -rf $(OBJ_DIR)
 
-fclean : clean
+fclean: clean
+	rm $(NAME)
 	rm -rf $(SOURCE_DIR)
 	make fclean -C libft
-	make fclean -C ftprintf
 
-re : fclean all
+re: fclean all

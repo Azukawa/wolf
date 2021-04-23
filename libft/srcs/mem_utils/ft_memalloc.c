@@ -6,7 +6,7 @@
 /*   By: eniini <eniini@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/15 20:26:56 by eniini            #+#    #+#             */
-/*   Updated: 2020/10/16 09:12:20 by eniini           ###   ########.fr       */
+/*   Updated: 2021/04/20 14:15:51 by eniini           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ void	*ft_memalloc(size_t size)
 {
 	void	*mem;
 
-	if (!(mem = (void*)malloc(sizeof(mem) * size)))
+	mem = (void *)malloc(sizeof(mem) * size);
+	if (!mem)
 		return (NULL);
 	ft_bzero(mem, size);
 	return (mem);

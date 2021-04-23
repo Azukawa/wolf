@@ -6,7 +6,7 @@
 /*   By: eniini <eniini@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/18 18:14:24 by eniini            #+#    #+#             */
-/*   Updated: 2020/10/16 09:22:33 by eniini           ###   ########.fr       */
+/*   Updated: 2021/04/20 14:32:09 by eniini           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ char	*ft_strsub(char const *s, unsigned int start, size_t len)
 
 	if (!s)
 		return (NULL);
-	if (!(strsub = (char*)malloc(sizeof(char) * (len) + 1)))
+	strsub = (char *)malloc(sizeof(char) * (len) + 1);
+	if (!strsub)
 		return (NULL);
 	i = 0;
 	strlen = ft_strlen(s);

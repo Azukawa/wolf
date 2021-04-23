@@ -6,7 +6,7 @@
 /*   By: eniini <eniini@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/15 14:19:43 by eniini            #+#    #+#             */
-/*   Updated: 2020/10/16 09:11:43 by eniini           ###   ########.fr       */
+/*   Updated: 2021/04/20 13:54:44 by eniini           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,18 +23,20 @@
 
 t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
 {
-	t_list *head;
-	t_list *elem;
+	t_list	*head;
+	t_list	*elem;
 
 	if (!lst || !f)
 		return (NULL);
-	if (!(elem = f(lst)))
+	elem = f(lst);
+	if (!elem)
 		return (NULL);
 	head = elem;
 	lst = lst->next;
 	while (lst)
 	{
-		if (!(elem->next = f(lst)))
+		elem->next = f(lst);
+		if (!elem->next)
 			break ;
 		elem = elem->next;
 		lst = lst->next;

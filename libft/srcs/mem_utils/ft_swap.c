@@ -6,7 +6,7 @@
 /*   By: eniini <eniini@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/03 18:30:20 by eniini            #+#    #+#             */
-/*   Updated: 2021/02/11 15:22:09 by eniini           ###   ########.fr       */
+/*   Updated: 2021/04/20 14:15:27 by eniini           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,10 @@
 
 void	ft_swap(void *a, void *b, size_t size)
 {
-	char *temp;
+	char	*temp;
 
-	if ((temp = malloc(size)))
+	temp = malloc(size);
+	if (temp)
 	{
 		ft_memcpy(temp, a, size);
 		ft_memcpy(a, b, size);

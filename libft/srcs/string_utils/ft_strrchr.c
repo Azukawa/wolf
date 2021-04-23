@@ -6,7 +6,7 @@
 /*   By: eniini <eniini@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/30 18:48:28 by eniini            #+#    #+#             */
-/*   Updated: 2020/10/16 09:21:48 by eniini           ###   ########.fr       */
+/*   Updated: 2021/04/20 14:28:33 by eniini           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ char	*ft_strrchr(const char *s, int c)
 	size_t	i;
 
 	if (c == '\0')
-		return ((char*)&s[ft_strlen(s)]);
+		return ((char *)&s[ft_strlen(s)]);
 	i = ft_strlen(s);
 	while (i--)
 	{

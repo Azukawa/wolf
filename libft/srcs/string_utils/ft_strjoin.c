@@ -6,27 +6,27 @@
 /*   By: eniini <eniini@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/18 14:29:24 by eniini            #+#    #+#             */
-/*   Updated: 2020/10/16 09:17:59 by eniini           ###   ########.fr       */
+/*   Updated: 2021/04/20 14:19:15 by eniini           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin(char const *a, char const *b)
 {
 	char	*concat;
 	char	*bookmark;
 
-	if (!s1 && !s2)
+	if (!a && !b)
 		return (NULL);
-	if (!(concat = (char*)malloc(sizeof(char) * (ft_strlen(s1) +
-	ft_strlen(s2) + 1))))
+	concat = (char *)malloc(sizeof(char) * (ft_strlen(a) + ft_strlen(b) + 1));
+	if (!concat)
 		return (NULL);
 	bookmark = concat;
-	while (*s1 != '\0')
-		*(concat++) = *(s1++);
-	while (*s2 != '\0')
-		*(concat++) = *(s2++);
+	while (*a != '\0')
+		*(concat++) = *(a++);
+	while (*b != '\0')
+		*(concat++) = *(b++);
 	*(concat) = '\0';
 	return (bookmark);
 }

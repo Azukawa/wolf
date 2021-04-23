@@ -6,126 +6,180 @@
 #    By: eniini <eniini@student.hive.fi>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/11 10:42:46 by eniini            #+#    #+#              #
-#    Updated: 2021/04/01 20:56:09 by eniini           ###   ########.fr        #
+#    Updated: 2021/04/22 18:18:08 by eniini           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = libft.a
+NAME	=	libft.a
+PRINTF	=	libftprintf.a
 
 # compiler
-CC = gcc
-CFLAGS = -Wall -Wextra -Werror
+CC	=	gcc
+CFLAGS	=	-Wall -Wextra -Werror
 
-# sources
-SRC_DIR = ./srcs
-INC_DIR = ./includes
-SRC = array_utils/ft_free_arr.c \
-	array_utils/ft_get_arr_size.c \
-	char_utils/ft_isalnum.c \
-	char_utils/ft_isalpha.c \
-	char_utils/ft_isascii.c \
-	char_utils/ft_isdigit.c \
-	char_utils/ft_islower.c \
-	char_utils/ft_isprint.c \
-	char_utils/ft_isspace.c \
-	char_utils/ft_isupper.c \
-	char_utils/ft_tolower.c \
-	char_utils/ft_toupper.c \
-	file_io/ft_putchar_fd.c \
-	file_io/ft_putchar.c \
-	file_io/ft_putendl_fd.c \
-	file_io/ft_putendl.c \
-	file_io/ft_putnbr_fd.c \
-	file_io/ft_putnbr.c \
-	file_io/ft_putstr_fd.c \
-	file_io/ft_putstr.c \
-	file_io/get_next_line.c \
-	gfx/ft_d_lerp.c \
-	gfx/ft_i_lerp.c \
-	gfx/ft_inverse_d_lerp.c \
-	gfx/ft_inverse_i_lerp.c \
-	llist_utils/ft_elemdel.c \
-	llist_utils/ft_lstadd.c \
-	llist_utils/ft_lstaddl.c \
-	llist_utils/ft_lstdel.c \
-	llist_utils/ft_lstdelone.c \
-	llist_utils/ft_lstiter.c \
-	llist_utils/ft_lstmap.c \
-	llist_utils/ft_lstnew.c \
-	math/ft_abs.c \
-	math/ft_clamp_d.c \
-	math/ft_clamp_i.c \
-	math/ft_pow.c \
-	mem_utils/ft_bzero.c \
-	mem_utils/ft_memalloc.c \
-	mem_utils/ft_memccpy.c \
-	mem_utils/ft_memchr.c \
-	mem_utils/ft_memcmp.c \
-	mem_utils/ft_memcpy.c \
-	mem_utils/ft_memdel.c \
-	mem_utils/ft_memmove.c \
-	mem_utils/ft_memset.c \
-	mem_utils/ft_realloc.c \
-	mem_utils/ft_swap.c \
-	process_control/ft_getout.c \
-	string_utils/ft_strcat.c \
-	string_utils/ft_strchr.c \
-	string_utils/ft_strclr.c \
-	string_utils/ft_strcmp.c \
-	string_utils/ft_strcpy.c \
-	string_utils/ft_strdel.c \
-	string_utils/ft_strdup.c \
-	string_utils/ft_strequ.c \
-	string_utils/ft_striter.c \
-	string_utils/ft_striteri.c \
-	string_utils/ft_strjoin.c \
-	string_utils/ft_strlcat.c \
-	string_utils/ft_strlen.c \
-	string_utils/ft_strmap.c \
-	string_utils/ft_strmapi.c \
-	string_utils/ft_strncat.c \
-	string_utils/ft_strncmp.c \
-	string_utils/ft_strncpy.c \
-	string_utils/ft_strndup.c \
-	string_utils/ft_strnequ.c \
-	string_utils/ft_strnew.c \
-	string_utils/ft_strnstr.c \
-	string_utils/ft_strrchr.c \
-	string_utils/ft_strsplit.c \
-	string_utils/ft_strstr.c \
-	string_utils/ft_strsub.c \
-	string_utils/ft_strtrim.c \
-	string_utils/ft_wordcount.c \
-	type_conversion/ft_atoi.c \
-	type_conversion/ft_ftoa.c \
-	type_conversion/ft_itoa_base.c \
-	type_conversion/ft_itoa.c \
-	type_conversion/ft_uitoa_base.c \
-	type_conversion/ft_uitoa.c \
-	wchar_utils/ft_putwchar.c \
-	wchar_utils/ft_putwstr.c \
-	wchar_utils/ft_wcharlen.c \
-	wchar_utils/ft_wstrlen.c
+# header directory
+INCDIR	=	includes
 
-OBJ = $(notdir $(SRC:.c=.o))
+# source directories
+SRCDIRS	=	array_utils: \
+		char_utils: \
+		file_io: \
+		gfx: \
+		llist_utils: \
+		math: \
+		mem_utils: \
+		process_control: \
+		string_utils: \
+		type_conversion: \
+		wchar_utils
+PFTDIR	=	ft_printf:
+# vpath
+VPATH	+=	$(addprefix srcs/,$(SRCDIRS))
+VPATH	+=	$(addprefix srcs/,$(PFTDIR))
+# source files
+SRCS	=	ft_free_arr.c \
+		ft_get_arr_size.c \
+		ft_isalnum.c \
+		ft_isalpha.c \
+		ft_isascii.c \
+		ft_isdigit.c \
+		ft_islower.c \
+		ft_isprint.c \
+		ft_isspace.c \
+		ft_isupper.c \
+		ft_tolower.c \
+		ft_toupper.c \
+		ft_putchar_fd.c \
+		ft_putchar.c \
+		ft_putendl_fd.c \
+		ft_putendl.c \
+		ft_putnbr_fd.c \
+		ft_putnbr.c \
+		ft_putstr_fd.c \
+		ft_putstr.c \
+		get_next_line.c \
+		ft_d_lerp.c \
+		ft_i_lerp.c \
+		ft_inverse_d_lerp.c \
+		ft_inverse_i_lerp.c \
+		ft_elemdel.c \
+		ft_lstadd.c \
+		ft_lstaddl.c \
+		ft_lstdel.c \
+		ft_lstdelone.c \
+		ft_lstiter.c \
+		ft_lstmap.c \
+		ft_lstnew.c \
+		ft_abs.c \
+		ft_clamp_d.c \
+		ft_clamp_i.c \
+		ft_pow.c \
+		ft_bzero.c \
+		ft_memalloc.c \
+		ft_memccpy.c \
+		ft_memchr.c \
+		ft_memcmp.c \
+		ft_memcpy.c \
+		ft_memdel.c \
+		ft_memmove.c \
+		ft_memset.c \
+		ft_swap.c \
+		ft_getout.c \
+		ft_strcat.c \
+		ft_strchr.c \
+		ft_strclr.c \
+		ft_strcmp.c \
+		ft_strcpy.c \
+		ft_strdel.c \
+		ft_strdup.c \
+		ft_strequ.c \
+		ft_striter.c \
+		ft_striteri.c \
+		ft_strjoin.c \
+		ft_strlcat.c \
+		ft_strlen.c \
+		ft_strmap.c \
+		ft_strmapi.c \
+		ft_strncat.c \
+		ft_strncmp.c \
+		ft_strncpy.c \
+		ft_strndup.c \
+		ft_strnequ.c \
+		ft_strnew.c \
+		ft_strnstr.c \
+		ft_strrchr.c \
+		ft_strsplit.c \
+		ft_strstr.c \
+		ft_strsub.c \
+		ft_strtrim.c \
+		ft_wordcount.c \
+		ft_atoi.c \
+		ft_ftoa.c \
+		ft_itoa_base.c \
+		ft_itoa.c \
+		ft_uitoa_base.c \
+		ft_uitoa.c \
+		ft_putwchar.c \
+		ft_putwstr.c \
+		ft_wcharlen.c \
+		ft_wstrlen.c \
+		ft_wstrnlen.c
+PFTSRCS	=	ft_printf.c \
+		ftprintf_c.c \
+		ftprintf_convert.c \
+		ftprintf_float.c \
+		ftprintf_integer.c \
+		ftprintf_read_args.c \
+		ftprintf_sign.c \
+		ftprintf_str.c \
+		ftprintf_typecheck.c
+
+#object directory
+OBJDIR	=	objs
+PFTOBJDIR =	pftobjs
+#object files
+OBJS	=	$(patsubst %,$(OBJDIR)/%,$(SRCS:.c=.o))
+PFTOBJS	=	$(patsubst %,$(PFTOBJDIR)/%,$(PFTSRCS:.c=.o))
 
 #colors
-CYAN = \033[0;36m
-NOCOL = \033[0m
+CYAN	=	\033[0;36m
+PURPLE	=	\033[1;35m
+NC	=	\033[0m
+#clear line, move backwards x columns
+RESET	=	\033[1K\033[100D
 
-.PHONY : all clean fclean re
+.PHONY: all clean fclean re
 
-all :
-	@$(CC) $(CFLAGS) -I $(INC_DIR) -c $(addprefix $(SRC_DIR)/,$(SRC))
-	@ar rcs $(NAME) $(OBJ)
-	@echo "${CYAN}[libft] libft archive created${NOCOL}"
+all: $(NAME) $(PRINTF)
+	@ar -rc $(NAME) $(PFTOBJS)
+	@echo -e "$(CYAN)$(RESET)[libft] finished!$(NC)"
 
-clean :
-	@rm -f $(OBJ)
-	@echo "${CYAN}[libft] .obj files removed${NOCOL}"
+$(OBJDIR)/%.o:%.c
+	@mkdir -p $(OBJDIR)
+	@echo -ne "$(CYAN)."
+	@$(CC) $(CFLAGS) -o $@ -c $< -I$(INCDIR)
 
-fclean : clean
+$(PFTOBJDIR)/%.o:%.c
+	@mkdir -p $(PFTOBJDIR)
+	@echo -ne "$(PURPLE)."
+	@$(CC) $(CFLAGS) -o $@ -c $< -I$(INCDIR)
+
+$(NAME): $(OBJS)
+	@ar rcs $(NAME) $(OBJS)
+	@echo -e "$(CYAN)$(RESET)[libft] library built!$(NC)"
+
+$(PRINTF): $(PFTOBJS)
+	@ar rcs $(PRINTF) $(PFTOBJS)
+	@echo -e "$(PURPLE)$(RESET)[ftprintf] library built!$(NC)"
+
+clean:
+	@rm -rf $(OBJDIR)
+	@rm -rf $(PFTOBJDIR)
+	@echo -e "$(CYAN)[libft] object files removed$(NC)"
+
+fclean: clean
 	@rm -f $(NAME)
-	@echo "${CYAN}[libft] archive removed${NOCOL}"
+	@rm -f $(PRINTF)
+	@echo -e "$(CYAN)[libft] static libraries removed$(NC)"
 
-re : fclean all
+re: fclean all

@@ -6,7 +6,7 @@
 /*   By: eniini <eniini@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 21:34:05 by eniini            #+#    #+#             */
-/*   Updated: 2021/03/10 12:59:57 by eniini           ###   ########.fr       */
+/*   Updated: 2021/04/21 11:50:35 by eniini           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,10 @@ static int	convert_hex(intmax_t n, int base, t_bool lcase)
 {
 	char	cval;
 
-	cval = (lcase) ? 'a' : 'A';
+	if (lcase)
+		cval = 'a';
+	else
+		cval = 'A';
 	if (n % base >= 10)
 		return (n % base - 10 + cval);
 	else
@@ -49,7 +52,29 @@ static int	get_len(intmax_t n, int base)
 	return (len);
 }
 
-char		*ft_itoa_base(intmax_t n, int base, t_bool lcase)
+static char	*get_str(intmax_t n, int base, t_bool lcase, int len)
+{
+	char	*s;
+
+	s = ft_strnew(len);
+	if (!s)
+		return (NULL);
+	if (n < 0)
+	{
+		s[0] = '-';
+		n = -n;
+	}
+	while (1)
+	{
+		s[--len] = convert_hex(n, base, lcase);
+		n /= base;
+		if (n == 0)
+			break ;
+	}
+	return (s);
+}
+
+char	*ft_itoa_base(intmax_t n, int base, t_bool lcase)
 {
 	char	*s;
 	int		len;
@@ -58,21 +83,11 @@ char		*ft_itoa_base(intmax_t n, int base, t_bool lcase)
 		return (NULL);
 	if (n == INTMAX_MIN)
 	{
-		if (!(s = ft_strdup("-9223372036854775808")))
+		s = ft_strdup("-9223372036854775808");
+		if (!s)
 			return (NULL);
 		return (s);
 	}
 	len = get_len(n, base);
-	if (!(s = ft_strnew(len)))
-		return (NULL);
-	if (n < 0)
-		s[0] = '-';
-	n = (n < 0) ? -n : n;
-	while (1)
-	{
-		s[--len] = convert_hex(n, base, lcase);
-		if ((n /= base) == 0)
-			break ;
-	}
-	return (s);
+	return (get_str(n, base, lcase, len));
 }

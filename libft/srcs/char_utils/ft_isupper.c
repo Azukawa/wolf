@@ -6,11 +6,11 @@
 /*   By: eniini <eniini@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/16 13:42:13 by eniini            #+#    #+#             */
-/*   Updated: 2020/07/16 13:47:25 by eniini           ###   ########.fr       */
+/*   Updated: 2021/04/20 12:39:45 by eniini           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_isupper(int c)
+int	ft_isupper(int c)
 {
 	if (c >= 'A' && c <= 'Z')
 		return (1);

@@ -6,7 +6,7 @@
 /*   By: eniini <eniini@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 22:04:30 by eniini            #+#    #+#             */
-/*   Updated: 2020/11/22 20:11:47 by eniini           ###   ########.fr       */
+/*   Updated: 2021/04/20 13:47:06 by eniini           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,5 @@ double	ft_d_lerp(double a, double b, double p)
 		return (b);
 	if (!(p))
 		return (a);
-	return (a * (1.0f - p)) + (b * p);
+	return ((a * (1.0f - p)) + (b * p));
 }
