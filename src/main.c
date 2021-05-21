@@ -6,7 +6,7 @@
 /*   By: alero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 11:03:10 by alero             #+#    #+#             */
-/*   Updated: 2021/04/20 13:07:15 by alero            ###   ########.fr       */
+/*   Updated: 2021/05/21 14:32:14 by alero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,9 @@ int			main(int argc, char** argv)
 
 	if (argc != 2)
 		ft_printf("Wrong number of arguments.\n");
-	s = ft_memalloc(sizeof(app));
-	app = ft_memalloc(sizeof(app));
+	s = ft_memalloc(sizeof(*s));
+	app = ft_memalloc(sizeof(*app));
 	app->run = 1;
-	ft_memset(app, 0, sizeof(app));
-	ft_memset(s, 0, sizeof(s));
 	initSDL(app);
 	ft_printf("xxx\n");
 	buildmap(argv[1], s);
@@ -53,8 +51,7 @@ int			main(int argc, char** argv)
 	free(s);
 	free(app);
 
-	printf("3333\n");
 	//SDL_DestroyWindow(app->window);
-	printf("Ran untill end\n");
+	ft_printf("Ran untill end\n");
 	return (1);
 }

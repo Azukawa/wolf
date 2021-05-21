@@ -18,8 +18,8 @@ void		drawmap(t_map *map, t_app *app)
 		return ;
 	int	x, y, square_x, square_y;
 	x = y = 0;
-	square_x = SCREEN_WIDTH / map->x;
-	square_y = SCREEN_HEIGHT / map->y;
+	square_x = SCREEN_WIDTH / (map->x - 1);
+	square_y = SCREEN_HEIGHT / (map->y - 1);
 	printf("mapx=%d\nmapy=%d\n", map->x, map->y);
 	while(y < SCREEN_HEIGHT)
 	{	
