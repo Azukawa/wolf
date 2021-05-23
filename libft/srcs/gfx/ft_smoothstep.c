@@ -1,30 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_d_lerp.c                                        :+:      :+:    :+:   */
+/*   ft_smoothstep.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eniini <eniini@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/19 22:04:30 by eniini            #+#    #+#             */
-/*   Updated: 2021/05/14 18:06:38 by eniini           ###   ########.fr       */
+/*   Created: 2021/04/23 11:54:11 by eniini            #+#    #+#             */
+/*   Updated: 2021/05/14 20:02:51 by eniini           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_gfx.h"
 
 /*
-**	Lineal interpolation calculation using floating point values.
-**	Handles precision differences between arguments by dividing
-**	the multiplications between [p] and [a/b] in two parts.
+**	Uses Hermite interpolation to create smooth transition between the
+**	[start] & [end] points. Returns a value between 0 and 1.
+**
+**	khronos.org/registry/OpenGL/specs/gl/GLSLangSpec.1.40.pdf#page=81
 */
 
-double	ft_d_lerp(double a, double b, double p)
+double	ft_smoothstep(double start, double end, double x)
 {
-	if (a == b)
-		return (a);
-	if (p == 1)
-		return (b);
-	if (!(p))
-		return (a);
-	return ((a * (1.0f - p)) + (b * p));
+	if (x < start)
+		return (0.0);
+	if (x > end)
+		return (1.0);
+	x = ft_clamp_d((x - start) / (end - start), 0.0, 1.0);
+	return (x * x * (3.0 - 2.0 * x));
 }

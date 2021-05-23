@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   drawmap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alero <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: eniini <eniini@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 11:01:28 by alero             #+#    #+#             */
-/*   Updated: 2021/04/20 13:10:07 by alero            ###   ########.fr       */
+/*   Updated: 2021/05/23 17:00:22 by eniini           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ void		drawmap(t_map *map, t_app *app)
 		while(x < SCREEN_WIDTH)
 		{
 			if (map->map[y / square_y][ x / square_x] == '0')
-				drawpixel(x, y, app->buffer, 0xFFFFFF);
+				drawpixel(x, y, app->buffer, 0xFFFFFF00);
 			else
-				drawpixel(x, y, app->buffer, 0x000000);
+				drawpixel(x, y, app->buffer, 0x00000000);
 			x++;
 		}
 		x = 0;

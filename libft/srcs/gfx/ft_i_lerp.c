@@ -6,11 +6,11 @@
 /*   By: eniini <eniini@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 22:04:33 by eniini            #+#    #+#             */
-/*   Updated: 2021/04/20 13:50:01 by eniini           ###   ########.fr       */
+/*   Updated: 2021/05/14 18:06:49 by eniini           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_gfx.h"
 
 /*
 **	Lineal interpolation calculation that returns an integer.

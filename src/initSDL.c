@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   initSDL.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eniini <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: eniini <eniini@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 10:56:35 by eniini            #+#    #+#             */
-/*   Updated: 2021/04/20 13:11:17 by alero            ###   ########.fr       */
+/*   Updated: 2021/05/23 17:07:10 by eniini           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	initSDL(t_app *app)
 	app->window = NULL;
 	app->screenSurface = NULL;
 	app->renderer = NULL;
-	app->buffer = ft_memalloc(SCREEN_WIDTH * SCREEN_HEIGHT * 4);
+	app->buffer = ft_memalloc(SCREEN_WIDTH * SCREEN_HEIGHT * sizeof(uint32_t));
 	if (SDL_Init(SDL_INIT_VIDEO) != 0)
 		exit(ft_printf("couldn't initialize SDL: %s\n", SDL_GetError()));
 	if (!(app->window = SDL_CreateWindow("Testgame01", SDL_WINDOWPOS_UNDEFINED,

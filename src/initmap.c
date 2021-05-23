@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   initmap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alero <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: eniini <eniini@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 10:54:43 by alero             #+#    #+#             */
-/*   Updated: 2021/05/21 15:42:46 by alero            ###   ########.fr       */
+/*   Updated: 2021/05/23 17:26:54 by eniini           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ int		initmap(t_map *s)
 	s->map = (char **)malloc(sizeof(char *) * (s->y + 1));
 	while(i <= s->y)
 	{
-		s->map[i] = (char *)malloc(sizeof(char *) * (s->x + 1));
-		ft_bzero(s->map[i], s->x);
-		s->map[i][s->x] = '\0';
+		s->map[i] = (char *)malloc(sizeof(char) * (s->x) + 1); //9 bytes from this are lost somewhere
+		ft_bzero(s->map[i], s->x + 1);
+		//s->map[i][s->x] = '\0';
 		i++;
 	}
 	s->map[s->y] = NULL;

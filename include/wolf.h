@@ -15,8 +15,8 @@ typedef struct		s_app
 	SDL_Window		*window;
 	SDL_Surface 	*screenSurface;
 	SDL_Texture		*texture;
-	char			*buffer;
-	int				*tex;
+	uint32_t		*buffer;
+	uint32_t		*tex;
 	int				run;
 	int				tex_pitch;
 }					t_app;
@@ -40,5 +40,5 @@ int			buildmap(char *str, t_map *s);
 void		initSDL(t_app *app);
 void		cleanup(t_app *app);
 void		drawmap(t_map *map, t_app *app);
-void		drawpixel(float x, float y, char *buffer, int color);
+void		drawpixel(int x, int y, uint32_t *buffer, int color);
 #endif

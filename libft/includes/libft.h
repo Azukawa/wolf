@@ -6,7 +6,7 @@
 /*   By: eniini <eniini@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/10 16:37:48 by eniini            #+#    #+#             */
-/*   Updated: 2021/04/22 17:50:31 by eniini           ###   ########.fr       */
+/*   Updated: 2021/05/14 20:07:55 by eniini           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,25 +24,17 @@
 # include <stdlib.h>
 # include <stdint.h>
 # include <wchar.h>
-
 # include "defs.h"
 
 typedef int		t_bool;
 # define TRUE	1
 # define FALSE	0
 
-/*
-**	Array manipulation/examination
-*/
-
+//	Array manipulation/examination
 void			ft_free_arr(char **arr);
-
 size_t			ft_get_arr_size(char **arr);
 
-/*
-**	Character manipulation/examination
-*/
-
+//	Character manipulation/examination
 int				ft_isalnum(int c);
 int				ft_isalpha(int c);
 int				ft_isascii(int c);
@@ -54,40 +46,21 @@ int				ft_isupper(int c);
 int				ft_toupper(int c);
 int				ft_tolower(int c);
 
-/*
-**	File I/O utility
-*/
-
+//	File I/O utility
 void			ft_putchar(char c);
 void			ft_putstr(char const *s);
 void			ft_putendl(char const *s);
 void			ft_putnbr(int n);
-
 void			ft_putchar_fd(char c, int fd);
 void			ft_putstr_fd(char const *s, int fd);
 void			ft_putendl_fd(char const *s, int fd);
 void			ft_putnbr_fd(int n, int fd);
-
 int				ft_printf(const char *s, ...);
 int				ft_fprintf(const int fd, const char *s, ...);
-
 int				get_next_line(const int fd, char **line);
 
-/*
-**	GFX utility
-*/
-
-int				ft_i_lerp(int a, int b, double p);
-double			ft_inverse_i_lerp(int a, int b, int x);
-
-double			ft_d_lerp(double a, double b, double p);
-double			ft_inverse_d_lerp(double a, double b, double x);
-
-/*
-**	Linked list utility
-**	ft_lstdel(2) & ft_lstdelone(2) should call ft_elemdel(2) by default.
-*/
-
+//	Linked list utility
+//	ft_lstdel(2) & ft_lstdelone(2) should call ft_elemdel(2) by default.
 t_list			*ft_lstnew(void const *content, size_t content_size);
 void			ft_lstdelone(t_list **alst, void (*del)(void *, size_t));
 void			ft_lstdel(t_list **alst, void (*del)(void *, size_t));
@@ -95,25 +68,15 @@ void			ft_lstadd(t_list **alst, t_list *new);
 void			ft_lstaddl(t_list **alst, t_list *new);
 void			ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 t_list			*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
-
 void			ft_elemdel(void *content, size_t size);
 
-/*
-**	Math utility
-*/
-
+//	Math utility
 int				ft_abs(int n);
-
 int				ft_clamp_i(int value, int min, int max);
 double			ft_clamp_d(double value, double min, double max);
-
 long long int	ft_pow(int i, unsigned int p);
 
-/*
-**	Memory utility
-**	note: realloc is wip!
-*/
-
+//	Memory utility
 void			ft_bzero(void *s, size_t n);
 void			*ft_memalloc(size_t size);
 void			*ft_memchr(const void *s, int c, size_t n);
@@ -125,16 +88,10 @@ void			*ft_memmove(void *dst, const void *src, size_t len);
 void			*ft_memset(void *b, int c, size_t len);
 void			ft_swap(void *a, void *b, size_t size);
 
-/*
-**	Process control
-*/
-
+//	Process control
 void			ft_getout(const char *str);
 
-/*
-**	String manipulation/examination
-*/
-
+//	String manipulation/examination
 char			*ft_strcat(char *a, const char *b);
 size_t			ft_strlcat(char *dst, const char *src, size_t dstsize);
 char			*ft_strncat(char *a, const char *b, size_t n);
@@ -162,32 +119,20 @@ char			*ft_strstr(const char *haystack, const char *needle);
 char			*ft_strnstr(const char *stack, const char *ndl, size_t len);
 char			*ft_strsub(char const *s, unsigned int start, size_t len);
 char			*ft_strtrim(char const *s);
-
 size_t			ft_wordcount(char const *s, char c);
 
-/*
-**	Wide string (UTF-8) I/O and examination
-*/
-
+//	Wide string (UTF-8) I/O and examination
 void			ft_putwchar(wint_t wc, int fd);
 void			ft_putwstr(wchar_t *wstr, int fd);
-
 int				ft_wcharlen(wint_t wc);
-
 size_t			ft_wstrlen(const wchar_t *wstr);
 size_t			ft_wstrnlen(const wchar_t *wstr, size_t n);
 
-/*
-**	Type conversions
-*/
-
+//	Type conversions
 int				ft_atoi(const char *str);
-
 char			*ft_ftoa(long double f, unsigned int prec);
-
 char			*ft_itoa(intmax_t n);
 char			*ft_itoa_base(intmax_t n, int base, t_bool lcase);
-
 char			*ft_uitoa(size_t ui);
 char			*ft_uitoa_base(size_t unb, int base, t_bool lcase);
 

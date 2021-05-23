@@ -14,14 +14,9 @@
 
 double	ft_clamp_d(double value, double min, double max)
 {
-	double	d;
-
 	if (value < min)
-		d = min;
-	else
-		d = value;
-	if (d > max)
-		return (max);
-	else
-		return (d);
+		value = min;
+	if (value > max)
+		value = max;
+	return (value);
 }

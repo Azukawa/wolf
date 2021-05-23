@@ -6,11 +6,11 @@
 /*   By: eniini <eniini@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/20 14:46:03 by eniini            #+#    #+#             */
-/*   Updated: 2020/11/22 20:11:59 by eniini           ###   ########.fr       */
+/*   Updated: 2021/05/14 18:06:52 by eniini           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_gfx.h"
 
 /*
 **	Calculates the distance of [x] in a vector [ab] as a percentage.

@@ -14,14 +14,9 @@
 
 int	ft_clamp_i(int value, int min, int max)
 {
-	int	i;
-
 	if (value < min)
-		i = min;
-	else
-		i = value;
-	if (i > max)
-		return (max);
-	else
-		return (i);
+		value = min;
+	if (value > max)
+		value = max;
+	return (value);
 }
