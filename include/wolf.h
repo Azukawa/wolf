@@ -24,9 +24,15 @@ typedef struct		s_app
 typedef	struct		s_map
 {
 	char			**map;
+	int				w;
+	int				h;
+}					t_map;
+
+typedef struct		s_point
+{
 	int				x;
 	int				y;
-}					t_map;
+}					t_point;
 
 # define SCREEN_WIDTH 600
 # define SCREEN_HEIGHT 400
