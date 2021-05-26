@@ -28,7 +28,7 @@ LIBFT = libft/libft.a
 SLD_SRC_DIR = SDL2-2.0.14
 SDL_DIR = libSDL2
 SDL_BUILD_DIR_PATH = $(CURDIR)/$(BUILD_DIR)
-SDL_CFLAGS = `$(BUILD_DIR)/bin/sdl2-config --cflags --libs`
+SDL_CFLAGS = `$(SDL_DIR)/bin/sdl2-config --cflags --libs`
 
 .PHONY: all clean fclean re
 
