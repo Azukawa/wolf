@@ -6,7 +6,7 @@
 /*   By: eniini <eniini@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 11:01:28 by alero             #+#    #+#             */
-/*   Updated: 2021/05/25 18:35:26 by eniini           ###   ########.fr       */
+/*   Updated: 2021/05/26 11:56:12 by alero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,6 @@ void		drawsquare(t_point start, t_point end, unsigned int *buffer, int color)
 {
 	int	x;
 
-	ft_clamp_d(start.x, 0, SCREEN_WIDTH);
-	ft_clamp_d(start.y, 0, SCREEN_HEIGHT);
-	ft_clamp_d(end.x, start.x, SCREEN_WIDTH);
-	ft_clamp_d(end.y, start.y, SCREEN_HEIGHT);
 	x = start.x;
 
 	while (start.y <= end.y)
