@@ -17,7 +17,8 @@ SRC_LIST =	main.c \
 		initmap.c \
 		initSDL.c \
 		linetogrid.c \
-		readmap.c
+		readmap.c \
+		drawtools.c
 SRCS = $(addprefix $(SRC_DIR),$(SRC_LIST))
 OBJS = $(addprefix $(OBJ_DIR),$(SRC_LIST:.c=.o))
 

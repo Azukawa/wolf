@@ -6,7 +6,7 @@
 /*   By: eniini <eniini@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 11:03:10 by alero             #+#    #+#             */
-/*   Updated: 2021/05/23 17:27:14 by eniini           ###   ########.fr       */
+/*   Updated: 2021/05/26 15:06:43 by eniini           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,17 @@ int			main(int argc, char** argv)
 			*	(how many pixels are drawn in one level).
 			*/
 			drawmap(s, app);
+			t_point p0 = {SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2};
+			t_point p1 = {SCREEN_WIDTH, SCREEN_HEIGHT};
+			t_point p2 = {SCREEN_WIDTH, 0};
+			t_point p3 = {0, SCREEN_HEIGHT};
+			t_point p4 = {0, 0};
+			draw_filled_circle(app, p0, 30, 0xffffff);
+			draw_circle(app, p0, 50, 0xffffff);
+			draw_line(app, p0, p1, 0xff0000);
+			draw_line(app, p0, p2, 0x25ff00);
+			draw_line(app, p0, p3, 0x00e3ff);
+			draw_line(app, p0, p4, 0xffe000);
 			if(SDL_LockTexture(app->texture, NULL, (void **)&app->tex, &app->tex_pitch) < 0)
 				app->run = 0;
 			ft_memcpy(app->tex, app->buffer, SCREEN_HEIGHT * app->tex_pitch);
@@ -46,7 +57,7 @@ int			main(int argc, char** argv)
 			app->run = 0;
 		}
 	ft_printf("111\n");
-	SDL_RenderPresent(app->renderer);
+	//SDL_RenderPresent(app->renderer);
 	SDL_Delay(3000);
 	ft_printf("2222\n");
 	

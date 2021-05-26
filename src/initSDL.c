@@ -6,7 +6,7 @@
 /*   By: eniini <eniini@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 10:56:35 by eniini            #+#    #+#             */
-/*   Updated: 2021/05/25 17:01:59 by eniini           ###   ########.fr       */
+/*   Updated: 2021/05/26 14:25:17 by eniini           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void	initSDL(t_app *app)
 	app->screenSurface = NULL;
 	app->renderer = NULL;
 	app->buffer = ft_memalloc(SCREEN_WIDTH * SCREEN_HEIGHT * sizeof(uint32_t));
+	ft_bzero(app->buffer, SCREEN_WIDTH * SCREEN_HEIGHT); //initializing this to full black before use to avoid problems
 	if (SDL_Init(SDL_INIT_VIDEO) != 0)
 		exit(ft_printf("couldn't initialize SDL: %s\n", SDL_GetError()));
 	if (!(app->window = SDL_CreateWindow("Testgame01", SDL_WINDOWPOS_UNDEFINED,
