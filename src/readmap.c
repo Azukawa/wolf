@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   readmap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alero <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: eniini <eniini@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 10:52:01 by alero             #+#    #+#             */
-/*   Updated: 2021/04/20 13:11:54 by alero            ###   ########.fr       */
+/*   Updated: 2021/05/25 16:59:28 by eniini           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,10 @@ int			readmap(char *str, t_map *s)
 		return(0);
 	while ((ret = get_next_line(fd, &output)) > 0)
 	{
-		s->map[i] = linetogrid(s->map[i], output, s->x);
+		s->map[i] = linetogrid(s->map[i], output, s->w);
 		i++;
 		free(output);
 	}
-//	free(output);
-	return(1);
+	return (1);
 
 }

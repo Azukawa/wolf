@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checkmap.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alero <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: eniini <eniini@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 10:53:13 by alero             #+#    #+#             */
-/*   Updated: 2021/05/21 14:45:43 by alero            ###   ########.fr       */
+/*   Updated: 2021/05/25 16:57:35 by eniini           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,12 @@ int		checkmap(char *str, t_map *s)
 		return(0);
 	while ((ret = get_next_line(fd, &output)) > 0)
 	{
-		if(ft_wordcount(output, ',') > (size_t)s->x)
-			s->x = ft_wordcount(output, ',');
+		if(ft_wordcount(output, ',') > (size_t)s->w)
+			s->w = ft_wordcount(output, ',');
 		i++;
 		free(output);
 	}
-	s->y = i;
+	s->h = i;
 //	free(output);
 	return (0);
 }

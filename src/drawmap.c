@@ -6,7 +6,7 @@
 /*   By: eniini <eniini@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 11:01:28 by alero             #+#    #+#             */
-/*   Updated: 2021/05/25 16:45:43 by alero            ###   ########.fr       */
+/*   Updated: 2021/05/25 18:35:26 by eniini           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 void		drawsquare(t_point start, t_point end, unsigned int *buffer, int color)
 {
 	int	x;
+
 	ft_clamp_d(start.x, 0, SCREEN_WIDTH);
 	ft_clamp_d(start.y, 0, SCREEN_HEIGHT);
 	ft_clamp_d(end.x, start.x, SCREEN_WIDTH);
@@ -46,10 +47,6 @@ void		drawmap(t_map *map, t_app *app)
 	int			color, square_x, square_y, x, y;
 
 	x = y = 0;
-	color = 0xFFFFFF00;
-//	start.x = start.y = 100;
-//	end.x = 150;
-//	end.y = 200;
 	square_x = SCREEN_WIDTH / map->w;
 	square_y = SCREEN_HEIGHT / map->h;
 
@@ -59,15 +56,18 @@ void		drawmap(t_map *map, t_app *app)
 		{
 			while (x < map->w)
 			{
-				if(map->map[y][x] == '0')	
-					color = 0xFFFFFF00;
+				if(map->map[y][x] == '0')
+					color = 0xffffff;
 				else
-					color = 0x00000000;
+					color = 0;
 				start.x = x * square_x;
 				start.y = y * square_y;
 				end.x = (x + 1) * square_x;
 				end.y = (y + 1) * square_y;
-				drawsquare(start, end, app->buffer, color);
+				if (color != 0)
+					drawsquare(start, end, app->buffer, ft_color_lerp(0x7f0055, ft_color_lerp(color, 0x7dff00, (float)x / map->w), (float)y / map->h));
+				else
+					drawsquare(start, end, app->buffer, 0);
 				x++;
 			}
 			y++;

@@ -6,7 +6,7 @@
 /*   By: eniini <eniini@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 10:56:35 by eniini            #+#    #+#             */
-/*   Updated: 2021/05/23 17:07:10 by eniini           ###   ########.fr       */
+/*   Updated: 2021/05/25 17:01:59 by eniini           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,6 @@ void	initSDL(t_app *app)
 	SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "linear");
 	if (!(app->renderer = SDL_CreateRenderer(app->window, -1, renderFlags)))
 		exit(ft_printf("Failed to create renderer: %s\n", SDL_GetError()));
-	if(!(app->texture = SDL_CreateTexture(app->renderer, SDL_PIXELFORMAT_RGBA8888, SDL_TEXTUREACCESS_STREAMING, SCREEN_WIDTH, SCREEN_HEIGHT)))
+	if(!(app->texture = SDL_CreateTexture(app->renderer, SDL_PIXELFORMAT_ARGB8888, SDL_TEXTUREACCESS_STREAMING, SCREEN_WIDTH, SCREEN_HEIGHT)))
 		exit(ft_printf("Failed to create texture: %s\n", SDL_GetError()));
 }
