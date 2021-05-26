@@ -48,5 +48,4 @@ void		initSDL(t_app *app);
 void		cleanup(t_app *app);
 void		drawmap(t_map *map, t_app *app);
 void		drawpixel(int x, int y, uint32_t *buffer, int color);
-void		draw_arbg_pixel(int x, int y, unsigned int *buffer, int a, int r, int g, int b);
 #endif
