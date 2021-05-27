@@ -6,7 +6,7 @@
 /*   By: eniini <eniini@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 11:03:10 by alero             #+#    #+#             */
-/*   Updated: 2021/05/27 16:33:15 by eniini           ###   ########.fr       */
+/*   Updated: 2021/05/27 17:21:50 by eniini           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,12 @@ int			main(int argc, char** argv)
 	t_map		*s;
 	t_app		*app;
 	SDL_Event	e;
-
+	t_player	player;
+	
 	if (argc != 2)
 		ft_printf("Wrong number of arguments.\n");
+	ft_memset(&player, 0, sizeof(t_player));
+	player.p.x = player.p.y = 100;
 	s = ft_memalloc(sizeof(*s));
 	app = ft_memalloc(sizeof(*app));
 	app->run = 1;
@@ -36,9 +39,7 @@ int			main(int argc, char** argv)
 
 	ft_printf("xxx\n");
 	buildmap(argv[1], s);
-	ft_printf("yyy\n");
 	ft_print2dcarr(s->map);
-	ft_printf("zzz\n");
 	app->screenSurface = SDL_GetWindowSurface(app->window);
 		while(app->run)
 		{
@@ -65,6 +66,10 @@ int			main(int argc, char** argv)
 			*	SDL_LockTexture gives us the tex_pitch which is the 'true' size of drawn screen width
 			*	(how many pixels are drawn in one level).
 			*/
+			keyevent(app, &e, &player);
+			drawmap(s, app);
+			drawplayer(app, &player);
+
 			if(SDL_LockTexture(app->texture, NULL, (void **)&app->tex, &app->tex_pitch) < 0)
 				app->run = 0;
 			ft_memcpy(app->tex, app->buffer, SCREEN_HEIGHT * app->tex_pitch);

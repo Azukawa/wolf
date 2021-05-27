@@ -6,7 +6,7 @@
 /*   By: eniini <eniini@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/26 13:12:29 by eniini            #+#    #+#             */
-/*   Updated: 2021/05/26 15:41:56 by eniini           ###   ########.fr       */
+/*   Updated: 2021/05/27 15:03:06 by eniini           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,26 +17,26 @@
 
 #include "../include/wolf.h"
 
-static void	init_startingvalues(t_point p0, t_point p1, int *x, int *y)
+static void	init_startingvalues(t_point p0, int *x, int *y)
 {
-	x = p0.x;
-	y = p0.y;
+	*x = p0.x;
+	*y = p0.y;
 }
 
 static void	init_errors(t_point p0, t_point p1, int *derror, int *error)
 {
-	derror = abs(p1.y - p0.y) * 2;
-	error = 0;
+	*derror = abs(p1.y - p0.y) * 2;
+	*error = 0;
 }
 
 static void	init_points(t_point p0, t_point p1, t_bool *flip)
 {
-	flip = FALSE;
+	*flip = FALSE;
 	if (abs(p0.x - p1.x) < abs(p0.y - p1.y))
 	{
 		ft_swap(&p0.x, &p0.y, sizeof(int));
 		ft_swap(&p1.x, &p1.y, sizeof(int));
-		flip = TRUE;
+		*flip = TRUE;
 	}
 	if (p0.x > p1.x)
 	{
@@ -61,7 +61,7 @@ void	draw_line(t_app *wolf, t_point p0, t_point p1, int color)
 
 	init_points(p0, p1, &flip);
 	init_errors(p0, p1, &derror, &error);
-	init_startingvalues(p0, p1, &x, &y);
+	init_startingvalues(p0, &x, &y);
 	while (x <= p1.x && x++)
 	{
 		if (flip)

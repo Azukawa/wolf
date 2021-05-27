@@ -48,12 +48,26 @@ typedef struct		s_point
 	int				y;
 }					t_point;
 
+<<<<<<< HEAD
 typedef	struct s_floatpoint
 {
 	float			x;
 	float			y;
 }					t_floatpoint;
 
+=======
+typedef struct		s_fpoint
+{
+	float			x;
+	float			y;
+}					t_fpoint;
+
+typedef struct		s_player
+{
+	t_fpoint		p;
+	float			dir;
+}					t_player;
+>>>>>>> a51d8768523e7325f3312d26bfbf4ce76300ec7a
 
 # define SCREEN_WIDTH 600
 # define SCREEN_HEIGHT 400
@@ -78,8 +92,13 @@ void		drawpixel(int x, int y, uint32_t *buffer, int color);
 void		draw_line(t_app *wolf, t_point p0, t_point p1, int color);
 void		draw_circle(t_app *wolf, t_point p, int r, int color);
 void		draw_filled_circle(t_app *wolf, t_point p, int r, int color);
+<<<<<<< HEAD
 void		keyevent(t_app *app, SDL_Event *e);
 
 void		raycast(t_app *app, t_map *map);
 
+=======
+void		keyevent(t_app *app, SDL_Event *e, t_player *p);
+void		drawplayer(t_app *app, t_player *player);
+>>>>>>> a51d8768523e7325f3312d26bfbf4ce76300ec7a
 #endif
