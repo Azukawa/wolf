@@ -20,7 +20,8 @@ SRC_LIST =	main.c \
 		readmap.c \
 		drawline.c \
 		drawcircle.c \
-		keyevent.c
+		keyevent.c \
+		raycaster.c
 SRCS = $(addprefix $(SRC_DIR),$(SRC_LIST))
 OBJS = $(addprefix $(OBJ_DIR),$(SRC_LIST:.c=.o))
 
@@ -39,13 +40,13 @@ all: $(LIBFT) $(NAME)
 
 $(OBJ_DIR)%.o:$(SRC_DIR)%.c
 	mkdir -p $(OBJ_DIR)
-	$(CC) $(CFLAGS) -Iincludes/ -Ilibft/includes -I$(SDL_DIR)/include/SDL2 -o $@ -c $<
+	$(CC) $(CFLAGS) -Iinclude/ -Ilibft/includes -I$(SDL_DIR)/include/SDL2 -o $@ -c $<
 
 $(LIBFT):
 	make -C libft
 
 $(NAME): $(OBJS)
-	$(CC) $(OBJS) $(SDL_CFLAGS) -L./libft/ -lft -o $(NAME)
+	$(CC) $(OBJS) $(SDL_CFLAGS) -L./libft/ -lft -lm -o $(NAME)
 
 SDL:
 	echo "Extracting SDL archive..."

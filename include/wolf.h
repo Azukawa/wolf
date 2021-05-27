@@ -10,6 +10,18 @@
 # include <fcntl.h>
 # include <unistd.h>
 
+typedef struct s_player
+{
+	double		pos_x;
+	double		pos_y;
+	double		dir_x;
+	double		dir_y;
+	double		plane_x;
+	double		plane_y;
+	//float		raycast_incrementer;
+	//int			raycast_precision;
+}				t_player;
+
 typedef struct		s_app
 {
 	SDL_Renderer	*renderer;
@@ -18,6 +30,7 @@ typedef struct		s_app
 	SDL_Texture		*texture;
 	uint32_t		*buffer;
 	uint32_t		*tex;
+	t_player		player;
 	int				run;
 	int				tex_pitch;
 }					t_app;
@@ -35,8 +48,21 @@ typedef struct		s_point
 	int				y;
 }					t_point;
 
+typedef	struct s_floatpoint
+{
+	float			x;
+	float			y;
+}					t_floatpoint;
+
+
 # define SCREEN_WIDTH 600
 # define SCREEN_HEIGHT 400
+
+# define HALF_SW 300
+# define HALF_SH 200
+
+# define FOV 60
+# define FOV_HALF 30
 
 void		ft_print2dcarr(char **arr);
 char		*linetogrid(char *ret, char *out, int x);
@@ -53,5 +79,7 @@ void		draw_line(t_app *wolf, t_point p0, t_point p1, int color);
 void		draw_circle(t_app *wolf, t_point p, int r, int color);
 void		draw_filled_circle(t_app *wolf, t_point p, int r, int color);
 void		keyevent(t_app *app, SDL_Event *e);
+
+void		raycast(t_app *app, t_map *map);
 
 #endif
