@@ -20,7 +20,8 @@ SRC_LIST =	main.c \
 		readmap.c \
 		drawline.c \
 		drawcircle.c \
-		keyevent.c
+		keyevent.c \
+		drawplayer.c
 SRCS = $(addprefix $(SRC_DIR),$(SRC_LIST))
 OBJS = $(addprefix $(OBJ_DIR),$(SRC_LIST:.c=.o))
 
