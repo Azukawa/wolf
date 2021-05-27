@@ -52,5 +52,6 @@ void		drawpixel(int x, int y, uint32_t *buffer, int color);
 void		draw_line(t_app *wolf, t_point p0, t_point p1, int color);
 void		draw_circle(t_app *wolf, t_point p, int r, int color);
 void		draw_filled_circle(t_app *wolf, t_point p, int r, int color);
+void		keyevent(t_app *app, SDL_Event *e);
 
 #endif

@@ -19,7 +19,8 @@ SRC_LIST =	main.c \
 		linetogrid.c \
 		readmap.c \
 		drawline.c \
-		drawcircle.c
+		drawcircle.c \
+		keyevent.c
 SRCS = $(addprefix $(SRC_DIR),$(SRC_LIST))
 OBJS = $(addprefix $(OBJ_DIR),$(SRC_LIST:.c=.o))
 
