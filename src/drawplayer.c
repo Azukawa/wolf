@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   drawplayer.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alero <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: eniini <eniini@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/27 15:00:19 by alero             #+#    #+#             */
-/*   Updated: 2021/05/27 15:00:46 by alero            ###   ########.fr       */
+/*   Updated: 2021/05/27 17:26:33 by eniini           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/wolf.h"
 
-void		drawplayer(t_app *app, t_player *player)
+void		drawplayer(t_app *app, t_map_player *player)
 {
 			t_point		point;
 			point.x = (int)player->p.x;
