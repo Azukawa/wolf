@@ -6,7 +6,7 @@
 /*   By: eniini <eniini@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 11:03:10 by alero             #+#    #+#             */
-/*   Updated: 2021/05/27 17:39:14 by eniini           ###   ########.fr       */
+/*   Updated: 2021/05/28 13:06:53 by alero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,9 +64,9 @@ int			main(int argc, char** argv)
 			*	(how many pixels are drawn in one level).
 			*/
 			keyevent(app, &e, &player);
-			//drawmap(s, app);
-			//drawplayer(app, &player);
-			raycast(app, s);
+			drawmap(s, app);
+			drawplayer(app, &player, s);
+//			raycast(app, s);
 
 			if(SDL_LockTexture(app->texture, NULL, (void **)&app->tex, &app->tex_pitch) < 0)
 				app->run = 0;
