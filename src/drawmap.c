@@ -6,7 +6,7 @@
 /*   By: eniini <eniini@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 11:01:28 by alero             #+#    #+#             */
-/*   Updated: 2021/05/26 11:56:12 by alero            ###   ########.fr       */
+/*   Updated: 2021/05/28 22:05:31 by eniini           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
  *		The start point is the top left corner,
  *		and end point is the lower right corner.
  */
-void		drawsquare(t_point start, t_point end, unsigned int *buffer, int color)
+static void	drawsquare(t_point start, t_point end, unsigned int *buffer, uint32_t color)
 {
 	int	x;
 
@@ -40,11 +40,12 @@ void		drawmap(t_map *map, t_app *app)
 {
 	t_point		start;
 	t_point		end;
-	int			color, square_x, square_y, x, y;
+	//int			color, 
+	int			square_x, square_y, x, y;
 
 	x = y = 0;
-	square_x = SCREEN_WIDTH / map->w;
-	square_y = SCREEN_HEIGHT / map->h;
+	square_x = (SCREEN_WIDTH / map->w) / 4;
+	square_y = (SCREEN_HEIGHT / map->h) / 4;
 
 	if(map)
 	{	
@@ -52,18 +53,19 @@ void		drawmap(t_map *map, t_app *app)
 		{
 			while (x < map->w)
 			{
-				if(map->map[y][x] == '0')
-					color = 0xffffff;
-				else
-					color = 0;
+				//if(map->map[y][x] == '0')
+				//	color = 0xffffffff;
+				//else
+				//	color = 0xff;
 				start.x = x * square_x;
 				start.y = y * square_y;
 				end.x = (x + 1) * square_x;
 				end.y = (y + 1) * square_y;
-				if (color != 0)
-					drawsquare(start, end, app->buffer, ft_color_lerp(0x7f0055, ft_color_lerp(color, 0x7dff00, (float)x / map->w), (float)y / map->h));
-				else
-					drawsquare(start, end, app->buffer, 0);
+				//if (color != 0)
+				if(map->map[y][x] == '0')
+					drawsquare(start, end, app->buffer, ft_argb_lerp(0xff7f0055, ft_argb_lerp(0xff, 0xff7dff00, (float)x / map->w), (float)y / map->h));
+				//else
+					//drawsquare(start, end, app->buffer, 0x0);
 				x++;
 			}
 			y++;

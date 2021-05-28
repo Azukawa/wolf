@@ -6,7 +6,7 @@
 /*   By: eniini <eniini@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 11:03:10 by alero             #+#    #+#             */
-/*   Updated: 2021/05/28 13:06:53 by alero            ###   ########.fr       */
+/*   Updated: 2021/05/28 20:53:11 by eniini           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,24 +28,22 @@ int			main(int argc, char** argv)
 	app->run = 1;
 	initSDL(app);
 
-	app->player.pos_x = 4.;
-	app->player.pos_y = 4.;
-	app->player.dir_x = -1;
-	app->player.dir_y = 0;
-	app->player.plane_x = 0;
-	app->player.plane_y = 0.66;
-
+	app->player.pos_x = 3.;
+	app->player.pos_y = 3.;
+	app->player.angle = 45.;
+	
 	ft_printf("xxx\n");
 	buildmap(argv[1], s);
 	ft_print2dcarr(s->map);
 	app->screenSurface = SDL_GetWindowSurface(app->window);
 		while(app->run)
 		{
-			keyevent(app, &e, &player);
+			keyevent(app, &e, &player, s);
 
 			ft_bzero(app->buffer, SCREEN_HEIGHT * SCREEN_WIDTH); //clear buffer
 
-			//drawmap(s, app);
+			raycast(app, s);
+			drawmap(s, app);
 			/*
 			t_point p0 = {SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2};
 			t_point p1 = {SCREEN_WIDTH, SCREEN_HEIGHT};
@@ -63,11 +61,9 @@ int			main(int argc, char** argv)
 			*	SDL_LockTexture gives us the tex_pitch which is the 'true' size of drawn screen width
 			*	(how many pixels are drawn in one level).
 			*/
-			keyevent(app, &e, &player);
-			drawmap(s, app);
-			drawplayer(app, &player, s);
-//			raycast(app, s);
-
+			keyevent(app, &e, &player, s);
+			//drawmap(s, app);
+			//drawplayer(app, &player, s);
 			if(SDL_LockTexture(app->texture, NULL, (void **)&app->tex, &app->tex_pitch) < 0)
 				app->run = 0;
 			ft_memcpy(app->tex, app->buffer, SCREEN_HEIGHT * app->tex_pitch);
@@ -76,7 +72,6 @@ int			main(int argc, char** argv)
 				app->run = 0;
 			SDL_RenderPresent(app->renderer);
 		}
-	
 	cleanup(app);
 
 	ft_free_arr(s->map);

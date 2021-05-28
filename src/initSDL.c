@@ -6,7 +6,7 @@
 /*   By: eniini <eniini@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 10:56:35 by eniini            #+#    #+#             */
-/*   Updated: 2021/05/26 14:25:17 by eniini           ###   ########.fr       */
+/*   Updated: 2021/05/28 21:51:15 by eniini           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	initSDL(t_app *app)
 	ft_bzero(app->buffer, SCREEN_WIDTH * SCREEN_HEIGHT); //initializing this to full black before use to avoid problems
 	if (SDL_Init(SDL_INIT_VIDEO) != 0)
 		exit(ft_printf("couldn't initialize SDL: %s\n", SDL_GetError()));
-	if (!(app->window = SDL_CreateWindow("Testgame01", SDL_WINDOWPOS_UNDEFINED,
+	if (!(app->window = SDL_CreateWindow(WOLF_HEADER, SDL_WINDOWPOS_UNDEFINED,
 	SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, windowFlags)))
 		exit(ft_printf("failed to open %d x %d window %s\n", SCREEN_WIDTH,
 		SCREEN_HEIGHT, SDL_GetError()));
@@ -32,4 +32,6 @@ void	initSDL(t_app *app)
 		exit(ft_printf("Failed to create renderer: %s\n", SDL_GetError()));
 	if(!(app->texture = SDL_CreateTexture(app->renderer, SDL_PIXELFORMAT_ARGB8888, SDL_TEXTUREACCESS_STREAMING, SCREEN_WIDTH, SCREEN_HEIGHT)))
 		exit(ft_printf("Failed to create texture: %s\n", SDL_GetError()));
+	if ((SDL_SetTextureBlendMode(app->texture, SDL_BLENDMODE_BLEND)))
+		ft_getout("[SDL2]failed to set texture blending mode");
 }

@@ -6,7 +6,7 @@
 /*   By: eniini <eniini@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/26 13:12:29 by eniini            #+#    #+#             */
-/*   Updated: 2021/05/27 15:03:06 by eniini           ###   ########.fr       */
+/*   Updated: 2021/05/28 20:01:38 by eniini           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,9 +65,9 @@ void	draw_line(t_app *wolf, t_point p0, t_point p1, int color)
 	while (x <= p1.x && x++)
 	{
 		if (flip)
-			drawpixel(y, x - 1, wolf->buffer, color);
-		else
 			drawpixel(x - 1, y, wolf->buffer, color);
+		else
+			drawpixel(y, x - 1, wolf->buffer, color);
 		error += derror;
 		if (error > p1.x - p0.x)
 		{

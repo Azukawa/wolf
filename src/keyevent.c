@@ -6,13 +6,13 @@
 /*   By: eniini <eniini@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/27 10:53:01 by alero             #+#    #+#             */
-/*   Updated: 2021/05/27 17:38:07 by eniini           ###   ########.fr       */
+/*   Updated: 2021/05/28 20:28:15 by eniini           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/wolf.h"
 
-void		keyevent(t_app *app, SDL_Event *e, t_map_player *p)
+void		keyevent(t_app *app, SDL_Event *e, t_map_player *p, t_map *map)
 {
 	while (SDL_PollEvent(e))
 	{
@@ -26,24 +26,30 @@ void		keyevent(t_app *app, SDL_Event *e, t_map_player *p)
 			p->p.y = p->p.y - 1;
 		if (e->type == SDL_KEYDOWN && e->key.keysym.sym == SDLK_DOWN)
 			p->p.y = p->p.y + 1;
-		if (e->type == SDL_KEYDOWN && e->key.keysym.sym == SDLK_q) //right rotation
+		if (e->type == SDL_KEYDOWN && e->key.keysym.sym == SDLK_w)
 		{
-			double old_dir_x = app->player.dir_x;
-			app->player.dir_x = app->player.dir_x * cos(-3.) - app->player.dir_y * sin(-3.);
-			app->player.dir_y = old_dir_x * sin(-3.) + app->player.dir_y * cos(-3.);
-			double old_plane_x = app->player.plane_x;
-			app->player.plane_x = app->player.plane_x * cos(-3.) - app->player.plane_y * sin(-3);
-			app->player.plane_y = old_plane_x * sin(-3) + app->player.plane_y * cos(-3);
+			double new_pos_x = app->player.pos_x + cos(app->player.angle * RAD_CON) * P_MOV_SPD;
+			double new_pos_y = app->player.pos_y + sin(app->player.angle * RAD_CON) * P_MOV_SPD;
+			if (map->map[(int)floor(new_pos_y)][(int)floor(new_pos_x)] == '0')
+			{
+				app->player.pos_x = new_pos_x;
+				app->player.pos_y = new_pos_y;
+			}
 		}
-		if (e->type == SDL_KEYDOWN && e->key.keysym.sym == SDLK_e) //left rotation
+		if (e->type == SDL_KEYDOWN && e->key.keysym.sym == SDLK_s)
 		{
-			double old_dir_x = app->player.dir_x;
-			app->player.dir_x = app->player.dir_x * cos(3.) - app->player.dir_y * sin(3.);
-			app->player.dir_y = old_dir_x * sin(3.) + app->player.dir_y * cos(3.);
-			double old_plane_x = app->player.plane_x;
-			app->player.plane_x = app->player.plane_x * cos(3.) - app->player.plane_y * sin(3);
-			app->player.plane_y = old_plane_x * sin(3) + app->player.plane_y * cos(3);
+			double new_pos_x = app->player.pos_x - cos(app->player.angle * RAD_CON) * P_MOV_SPD;
+			double new_pos_y = app->player.pos_y - sin(app->player.angle * RAD_CON) * P_MOV_SPD;
+			if (map->map[(int)floor(new_pos_y)][(int)floor(new_pos_x)] == '0')
+			{
+				app->player.pos_x = new_pos_x;
+				app->player.pos_y = new_pos_y;
+			}
 		}
+		if (e->type == SDL_KEYDOWN && e->key.keysym.sym == SDLK_a)
+			app->player.angle -= P_ROTATION_UNIT;
+		if (e->type == SDL_KEYDOWN && e->key.keysym.sym == SDLK_d)
+			app->player.angle += P_ROTATION_UNIT;
 	}
 
 }
