@@ -6,7 +6,7 @@
 /*   By: eniini <eniini@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 11:03:10 by alero             #+#    #+#             */
-/*   Updated: 2021/05/28 20:53:11 by eniini           ###   ########.fr       */
+/*   Updated: 2021/05/31 19:01:21 by eniini           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,26 +43,13 @@ int			main(int argc, char** argv)
 			ft_bzero(app->buffer, SCREEN_HEIGHT * SCREEN_WIDTH); //clear buffer
 
 			raycast(app, s);
-			drawmap(s, app);
-			/*
-			t_point p0 = {SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2};
-			t_point p1 = {SCREEN_WIDTH, SCREEN_HEIGHT};
-			t_point p2 = {SCREEN_WIDTH, 0};
-			t_point p3 = {0, SCREEN_HEIGHT};
-			t_point p4 = {0, 0};
-			draw_filled_circle(app, p0, 30, 0xffffff);
-			draw_circle(app, p0, 50, 0xffffff);
-			draw_line(app, p0, p1, 0xff0000);
-			draw_line(app, p0, p2, 0x25ff00);
-			draw_line(app, p0, p3, 0x00e3ff);
-			draw_line(app, p0, p4, 0xffe000);
-			*/
+			if (app->draw_ui)
+				drawmap(s, app);
 			/*
 			*	SDL_LockTexture gives us the tex_pitch which is the 'true' size of drawn screen width
 			*	(how many pixels are drawn in one level).
 			*/
 			keyevent(app, &e, &player, s);
-			//drawmap(s, app);
 			//drawplayer(app, &player, s);
 			if(SDL_LockTexture(app->texture, NULL, (void **)&app->tex, &app->tex_pitch) < 0)
 				app->run = 0;

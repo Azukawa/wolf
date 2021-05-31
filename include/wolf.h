@@ -32,6 +32,7 @@ typedef struct		s_app
 	t_player		player;
 	int				run;
 	int				tex_pitch;
+	t_bool			draw_ui;
 }					t_app;
 
 typedef	struct		s_map

@@ -6,7 +6,7 @@
 /*   By: eniini <eniini@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/27 10:53:01 by alero             #+#    #+#             */
-/*   Updated: 2021/05/28 20:28:15 by eniini           ###   ########.fr       */
+/*   Updated: 2021/05/31 19:00:32 by eniini           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void		keyevent(t_app *app, SDL_Event *e, t_map_player *p, t_map *map)
 			p->p.y = p->p.y - 1;
 		if (e->type == SDL_KEYDOWN && e->key.keysym.sym == SDLK_DOWN)
 			p->p.y = p->p.y + 1;
+	//MOVEMENT AND COLLISION CHECKS
 		if (e->type == SDL_KEYDOWN && e->key.keysym.sym == SDLK_w)
 		{
 			double new_pos_x = app->player.pos_x + cos(app->player.angle * RAD_CON) * P_MOV_SPD;
@@ -50,6 +51,14 @@ void		keyevent(t_app *app, SDL_Event *e, t_map_player *p, t_map *map)
 			app->player.angle -= P_ROTATION_UNIT;
 		if (e->type == SDL_KEYDOWN && e->key.keysym.sym == SDLK_d)
 			app->player.angle += P_ROTATION_UNIT;
+	// DRAW UI OR NOT
+		if (e->type == SDL_KEYDOWN && e->key.keysym.sym == SDLK_i)
+		{
+			if (app->draw_ui)
+				app->draw_ui = FALSE;
+			else
+				app->draw_ui = TRUE;
+		}
 	}
 
 }
