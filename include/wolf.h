@@ -101,4 +101,7 @@ void		raycast(t_app *app, t_map *map);
 void		keyevent(t_app *app, SDL_Event *e, t_map_player *p, t_map *map);
 void		drawplayer(t_app *app, t_map_player *player, t_map *map);
 
+uint32_t	argb_grayscale(uint32_t c);
+uint32_t	argb_realgrayscale(uint32_t c);
+
 #endif
