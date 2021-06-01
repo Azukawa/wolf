@@ -6,7 +6,7 @@
 /*   By: eniini <eniini@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 11:03:10 by alero             #+#    #+#             */
-/*   Updated: 2021/05/31 19:01:21 by eniini           ###   ########.fr       */
+/*   Updated: 2021/06/01 09:45:25 by eniini           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,8 @@ int			main(int argc, char** argv)
 	s = ft_memalloc(sizeof(*s));
 	app = ft_memalloc(sizeof(*app));
 	app->run = 1;
-	initSDL(app);
-
-	app->player.pos_x = 3.;
-	app->player.pos_y = 3.;
-	app->player.angle = 45.;
-	
+	init_SDL(app);
+	init_player_vars(app);
 	ft_printf("xxx\n");
 	buildmap(argv[1], s);
 	ft_print2dcarr(s->map);

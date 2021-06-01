@@ -6,7 +6,7 @@
 #    By: eniini <eniini@student.hive.fi>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/11 10:42:46 by eniini            #+#    #+#              #
-#    Updated: 2021/05/22 17:40:51 by eniini           ###   ########.fr        #
+#    Updated: 2021/06/01 10:22:13 by eniini           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -131,7 +131,8 @@ PFTSRCS	=	ft_printf.c \
 		ftprintf_sign.c \
 		ftprintf_str.c \
 		ftprintf_typecheck.c
-GFXSRCS	=	ft_color_lerp.c \
+GFXSRCS	=	ft_argb_lerp.c \
+		ft_color_lerp.c \
 		ft_d_lerp.c \
 		ft_i_lerp.c \
 		ft_inverse_d_lerp.c \

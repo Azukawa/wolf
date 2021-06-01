@@ -6,7 +6,7 @@
 /*   By: eniini <eniini@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/29 17:23:17 by eniini            #+#    #+#             */
-/*   Updated: 2021/05/22 16:04:11 by eniini           ###   ########.fr       */
+/*   Updated: 2021/06/01 10:19:05 by eniini           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ typedef struct s_gfxinfo
 	char		**two_d_addr;
 }				t_gfxinfo;
 
+uint32_t		ft_argb_lerp(uint32_t c1, uint32_t c2, double p);
+
 int				ft_color_lerp(int c1, int c2, double p);
 
 int				ft_i_lerp(int a, int b, double p);
@@ -53,8 +55,8 @@ int				ft_create_bmp(char *filename, t_gfxinfo *info);
 
 int				ft_hueshift(int c, double p);
 
-t_gfxinfo	*ft_init_1d_info(int win_w, int win_h, int bpp, char *addr);
-t_gfxinfo	*ft_init_2d_info(int win_w, int win_h, int bpp, char **addr);
+t_gfxinfo		*ft_init_1d_info(int win_w, int win_h, int bpp, char *addr);
+t_gfxinfo		*ft_init_2d_info(int win_w, int win_h, int bpp, char **addr);
 
 double			ft_smoothstep(double start, double end, double x);
 

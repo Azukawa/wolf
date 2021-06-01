@@ -22,8 +22,7 @@ SRC_LIST =	main.c \
 		drawcircle.c \
 		keyevent.c \
 		raycaster.c \
-		drawplayer.c \
-		ft_argb_lerp.c
+		drawplayer.c
 SRCS = $(addprefix $(SRC_DIR),$(SRC_LIST))
 OBJS = $(addprefix $(OBJ_DIR),$(SRC_LIST:.c=.o))
 

@@ -6,13 +6,13 @@
 /*   By: eniini <eniini@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 10:56:35 by eniini            #+#    #+#             */
-/*   Updated: 2021/05/28 21:51:15 by eniini           ###   ########.fr       */
+/*   Updated: 2021/06/01 09:45:21 by eniini           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/wolf.h"
 
-void	initSDL(t_app *app)
+void	init_SDL(t_app *app)
 {
 	int		renderFlags = SDL_RENDERER_ACCELERATED;
 	int		windowFlags = 0;
@@ -34,4 +34,14 @@ void	initSDL(t_app *app)
 		exit(ft_printf("Failed to create texture: %s\n", SDL_GetError()));
 	if ((SDL_SetTextureBlendMode(app->texture, SDL_BLENDMODE_BLEND)))
 		ft_getout("[SDL2]failed to set texture blending mode");
+}
+
+void	init_player_vars(t_app *app)
+{
+	app->player.pos_x = 3.;
+	app->player.pos_y = 3.;
+	app->player.angle = 45.;
+	app->player.fov = 60;
+	app->player.move_u = 0.5;
+	app->player.rotation_u = 5.0;
 }
