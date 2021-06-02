@@ -6,7 +6,7 @@
 /*   By: eniini <eniini@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/22 14:03:51 by eniini            #+#    #+#             */
-/*   Updated: 2021/05/22 17:08:18 by eniini           ###   ########.fr       */
+/*   Updated: 2021/06/02 16:05:06 by eniini           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <errno.h>
 #include <unistd.h>
 
-t_gfxinfo	*ft_init_1d_info(int win_w, int win_h, int bpp, char *addr)
+t_gfxinfo	*ft_init_1d_info(int w, int h, int bpp, unsigned char *c)
 {
 	t_gfxinfo	*info;
 
@@ -25,15 +25,15 @@ t_gfxinfo	*ft_init_1d_info(int win_w, int win_h, int bpp, char *addr)
 		ft_putstr_fd(strerror(errno), STDERR_FILENO);
 		return (NULL);
 	}
-	info->win_width = win_w;
-	info->win_height = win_h;
+	info->img_width = w;
+	info->img_height = h;
 	info->bpp = bpp;
-	info->one_d_addr = addr;
+	info->one_d_addr = c;
 	info->two_d_addr = NULL;
 	return (info);
 }
 
-t_gfxinfo	*ft_init_2d_info(int win_w, int win_h, int bpp, char **addr)
+t_gfxinfo	*ft_init_2d_info(int w, int h, int bpp, unsigned char **c)
 {
 	t_gfxinfo	*info;
 
@@ -43,10 +43,10 @@ t_gfxinfo	*ft_init_2d_info(int win_w, int win_h, int bpp, char **addr)
 		ft_putstr_fd(strerror(errno), STDERR_FILENO);
 		return (NULL);
 	}
-	info->win_width = win_w;
-	info->win_height = win_h;
+	info->img_width = w;
+	info->img_height = h;
 	info->bpp = bpp;
 	info->one_d_addr = NULL;
-	info->two_d_addr = addr;
+	info->two_d_addr = c;
 	return (info);
 }
