@@ -6,7 +6,7 @@
 /*   By: eniini <eniini@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 10:52:01 by alero             #+#    #+#             */
-/*   Updated: 2021/05/25 16:59:28 by eniini           ###   ########.fr       */
+/*   Updated: 2021/06/01 15:03:48 by alero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,16 @@
  *	and builds final array with
  *	linetogrid()
  */
-int			readmap(char *str, t_map *s)
+int	readmap(char *str, t_map *s)
 {
 	int		fd;
 	int		ret;
 	int		i;
-	char*	output;
+	char	*output;
 
 	i = 0;
-	
 	if ((fd = open(str, O_RDONLY)) == -1)
-		return(0);
+		return (0);
 	while ((ret = get_next_line(fd, &output)) > 0)
 	{
 		s->map[i] = linetogrid(s->map[i], output, s->w);
@@ -36,5 +35,4 @@ int			readmap(char *str, t_map *s)
 		free(output);
 	}
 	return (1);
-
 }

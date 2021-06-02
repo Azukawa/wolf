@@ -6,7 +6,7 @@
 /*   By: eniini <eniini@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 10:56:35 by eniini            #+#    #+#             */
-/*   Updated: 2021/06/01 09:45:21 by eniini           ###   ########.fr       */
+/*   Updated: 2021/06/01 14:36:13 by alero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,11 @@
 
 void	init_SDL(t_app *app)
 {
-	int		renderFlags = SDL_RENDERER_ACCELERATED;
-	int		windowFlags = 0;
+	int		renderFlags;
+	int		windowFlags;
+
+	renderFlags = SDL_RENDERER_ACCELERATED;
+	windowFlags = 0;
 	app->window = NULL;
 	app->screenSurface = NULL;
 	app->renderer = NULL;
@@ -30,7 +33,7 @@ void	init_SDL(t_app *app)
 	SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "linear");
 	if (!(app->renderer = SDL_CreateRenderer(app->window, -1, renderFlags)))
 		exit(ft_printf("Failed to create renderer: %s\n", SDL_GetError()));
-	if(!(app->texture = SDL_CreateTexture(app->renderer, SDL_PIXELFORMAT_ARGB8888, SDL_TEXTUREACCESS_STREAMING, SCREEN_WIDTH, SCREEN_HEIGHT)))
+	if (!(app->texture = SDL_CreateTexture(app->renderer, SDL_PIXELFORMAT_ARGB8888, SDL_TEXTUREACCESS_STREAMING, SCREEN_WIDTH, SCREEN_HEIGHT)))
 		exit(ft_printf("Failed to create texture: %s\n", SDL_GetError()));
 	if ((SDL_SetTextureBlendMode(app->texture, SDL_BLENDMODE_BLEND)))
 		ft_getout("[SDL2]failed to set texture blending mode");
