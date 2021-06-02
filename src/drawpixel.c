@@ -6,12 +6,21 @@
 /*   By: eniini <eniini@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 11:00:27 by alero             #+#    #+#             */
+<<<<<<< HEAD
+/*   Updated: 2021/06/01 15:47:05 by alero            ###   ########.fr       */
+=======
 /*   Updated: 2021/06/01 15:35:14 by eniini           ###   ########.fr       */
+>>>>>>> 9ec6119b80a20a7b05063a8f1021e0b7e204ad28
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/wolf.h"
 
+<<<<<<< HEAD
+//todo check if color should be unsigned int
+//todo check endian for correct colors
+void	drawpixel(int x, int y, uint32_t *buffer, uint32_t color)
+=======
 /*
 *	Calculates the perceived brightness (luma) of a given color.
 */
@@ -55,10 +64,17 @@ uint32_t	argb_realgrayscale(uint32_t c)
 	*/
 
 void		drawpixel(int x, int y, uint32_t *buffer, uint32_t color)
+>>>>>>> 9ec6119b80a20a7b05063a8f1021e0b7e204ad28
 {
 	uint32_t	i;
+
 	i = (SCREEN_WIDTH * y) + x;
+<<<<<<< HEAD
+	if (x < SCREEN_WIDTH && y < SCREEN_HEIGHT && x >= 0 && y >= 0)
+	{
+=======
 	if (x < SCREEN_WIDTH && y < SCREEN_HEIGHT &&  x >= 0 && y >= 0)
+>>>>>>> 9ec6119b80a20a7b05063a8f1021e0b7e204ad28
 		buffer[i] = color;
 }
 

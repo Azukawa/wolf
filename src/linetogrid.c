@@ -6,7 +6,7 @@
 /*   By: alero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 10:49:59 by alero             #+#    #+#             */
-/*   Updated: 2021/05/21 15:14:05 by alero            ###   ########.fr       */
+/*   Updated: 2021/06/01 14:59:07 by alero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,16 @@
  */
 char	*linetogrid(char *ret, char *out, int x)
 {
-	int a;
-	int i;
+	int	a;
+	int	i;
 
 	i = 0;
 	a = 0;
-	if(ret == NULL || out == NULL)
-		return(0);
+	if (ret == NULL || out == NULL)
+		return (0);
 	while (i < x && out[a] != '\0')
 	{
-		if(out[a] != ',' && out[a] != ' ' )
+		if (out[a] != ',' && out[a] != ' ' )
 		{
 			ret[i] = out[a];
 			i++;
@@ -35,5 +35,5 @@ char	*linetogrid(char *ret, char *out, int x)
 		a++;
 	}
 	ret[i] = '\0';
-	return(ret);
+	return (ret);
 }

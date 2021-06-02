@@ -6,7 +6,7 @@
 /*   By: alero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 10:49:01 by alero             #+#    #+#             */
-/*   Updated: 2021/05/21 15:16:53 by alero            ###   ########.fr       */
+/*   Updated: 2021/06/01 13:59:27 by alero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,12 @@
  */
 void	ft_print2dcarr(char **arr)
 {
-	int i;
+	int	i;
+
 	i = 0;
 	if (!arr)
 		return ;
-	while(arr[i] != NULL)
+	while (arr[i] != NULL)
 	{
 		ft_printf("row%d =\t\t%s\n", i, arr[i]);
 		i++;

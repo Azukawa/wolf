@@ -6,7 +6,7 @@
 /*   By: eniini <eniini@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/27 15:00:19 by alero             #+#    #+#             */
-/*   Updated: 2021/05/28 13:47:20 by alero            ###   ########.fr       */
+/*   Updated: 2021/06/02 14:49:52 by alero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,20 +18,20 @@ void		drawplayer(t_app *app, t_map_player *player, t_map *map)
 			int			square_x, square_y;
 			square_x = player->p.x * ((float)map->w / SCREEN_WIDTH);
 			square_y = player->p.y * ((float)map->h / SCREEN_HEIGHT);
-			printf("square_x = %i\nsquare_y = %i\nmap->w = %i\n", square_x, square_y, map->w);
+			ft_printf("square_x = %i\nsquare_y = %i\nmap->w = %i\n", square_x, square_y, map->w);
 			
 			if(map->map[square_y][square_x]== '0')
 			{
 				point.x = (int)player->p.x;
 				point.y = (int)player->p.y;
-				printf("CLEAR\n");
+				ft_printf("CLEAR\n");
 			}
 			else
 			{
 				player->p.x = point.x;
 				player->p.y = point.y;
 
-				printf("COLLISION!\n");
+				ft_printf("COLLISION!\n");
 			}
 						
 
