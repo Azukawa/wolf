@@ -2,7 +2,7 @@ NAME	=	wolf3d
 
 #compiler
 CC	=	gcc
-CFLAGS	=	-Wall -Wextra -Werror -g
+CFLAGS	=	-Wall -Wextra -g
 
 #sources & object files
 SRC_DIR =	./src/
@@ -30,9 +30,9 @@ OBJS = $(addprefix $(OBJ_DIR),$(SRC_LIST:.c=.o))
 LIBFT = libft/libft.a
 
 #SDL2
-SLD_SRC_DIR = SDL2-2.0.14
+SDL_SRC_DIR = SDL2-2.0.14
 SDL_DIR = libSDL2
-SDL_BUILD_DIR_PATH = $(CURDIR)/$(BUILD_DIR)
+SDL_BUILD_DIR_PATH = $(CURDIR)/$(SDL_DIR)
 SDL_CFLAGS = `$(SDL_DIR)/bin/sdl2-config --cflags --libs`
 
 .PHONY: all clean fclean re
