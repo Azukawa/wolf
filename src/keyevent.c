@@ -6,17 +6,13 @@
 /*   By: eniini <eniini@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/27 10:53:01 by alero             #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2021/06/01 14:56:02 by alero            ###   ########.fr       */
-=======
-/*   Updated: 2021/06/01 23:00:07 by eniini           ###   ########.fr       */
->>>>>>> 9ec6119b80a20a7b05063a8f1021e0b7e204ad28
+/*   Updated: 2021/06/01 10:05:49 by eniini           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/wolf.h"
 
-void	keyevent(t_app *app, SDL_Event *e, t_map_player *p, t_map *map)
+void		keyevent(t_app *app, SDL_Event *e, t_map_player *p, t_map *map)
 {
 	while (SDL_PollEvent(e))
 	{
@@ -35,10 +31,6 @@ void	keyevent(t_app *app, SDL_Event *e, t_map_player *p, t_map *map)
 		{
 			double new_pos_x = app->player.pos_x + cos(app->player.angle * RAD_CON) * app->player.move_u;
 			double new_pos_y = app->player.pos_y + sin(app->player.angle * RAD_CON) * app->player.move_u;
-			if (new_pos_x > map->w)
-				new_pos_x = (double)map->w;
-			if (new_pos_y > map->h)
-				new_pos_y = (double)map->h;
 			if (map->map[(int)floor(new_pos_y)][(int)floor(new_pos_x)] == '0')
 			{
 				app->player.pos_x = new_pos_x;
@@ -47,17 +39,8 @@ void	keyevent(t_app *app, SDL_Event *e, t_map_player *p, t_map *map)
 		}
 		if (e->type == SDL_KEYDOWN && e->key.keysym.sym == SDLK_s)
 		{
-<<<<<<< HEAD
-			double	new_pos_x = app->player.pos_x - cos(app->player.angle * RAD_CON) * app->player.move_u;
-			double	new_pos_y = app->player.pos_y - sin(app->player.angle * RAD_CON) * app->player.move_u;
-=======
 			double new_pos_x = app->player.pos_x - cos(app->player.angle * RAD_CON) * app->player.move_u;
 			double new_pos_y = app->player.pos_y - sin(app->player.angle * RAD_CON) * app->player.move_u;
-			if (new_pos_x < 0)
-				new_pos_x = 0.;
-			if (new_pos_y < 0)
-				new_pos_y = 0.;
->>>>>>> 9ec6119b80a20a7b05063a8f1021e0b7e204ad28
 			if (map->map[(int)floor(new_pos_y)][(int)floor(new_pos_x)] == '0')
 			{
 				app->player.pos_x = new_pos_x;
@@ -77,4 +60,5 @@ void	keyevent(t_app *app, SDL_Event *e, t_map_player *p, t_map *map)
 				app->draw_ui = TRUE;
 		}
 	}
+
 }
