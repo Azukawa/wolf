@@ -6,7 +6,7 @@
 /*   By: eniini <eniini@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/29 17:23:17 by eniini            #+#    #+#             */
-/*   Updated: 2021/06/02 16:04:49 by eniini           ###   ########.fr       */
+/*   Updated: 2021/06/03 18:37:56 by eniini           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,11 @@ typedef struct s_rgb_mat
 *	gfxinfo solves the problem while also respecting
 *	Norme's function parameter limit.
 */
+//Struct for storing and manipulating raw image data
 typedef struct s_gfxinfo
 {
-	int				img_width;
-	int				img_height;
+	int				img_w;
+	int				img_h;
 	int				bpp;
 	unsigned char	*one_d_addr;
 	unsigned char	**two_d_addr;
