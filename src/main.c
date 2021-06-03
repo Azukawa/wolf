@@ -6,7 +6,7 @@
 /*   By: eniini <eniini@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 11:03:10 by alero             #+#    #+#             */
-/*   Updated: 2021/06/02 23:15:21 by eniini           ###   ########.fr       */
+/*   Updated: 2021/06/03 13:05:04 by alero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ int			main(int argc, char** argv)
 			ft_getout(SDL_GetError());
 		//if (SDL_RenderCopy(app->renderer, bmptex, NULL, &bmprct) < 0)
 		//	ft_getout(SDL_GetError());
+		fps_counter();
 		SDL_RenderPresent(app->renderer);
 	}
 	cleanup(app);
