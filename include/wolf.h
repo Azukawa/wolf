@@ -99,11 +99,11 @@ void		draw_filled_circle(t_app *wolf, t_point p, int r, int color);
 
 void		raycast(t_app *app, t_map *map);
 
-void		keyevent(t_app *app, SDL_Event *e, t_map_player *p, t_map *map);
+void		keyevent(t_app *app, SDL_Event *e);
 void		drawplayer(t_app *app, t_map_player *player, t_map *map);
 
 void		fps_counter(void);
 uint32_t	argb_grayscale(uint32_t c);
 uint32_t	argb_realgrayscale(uint32_t c);
-
+void		check_collision(t_app *app, t_map *map);
 #endif

@@ -6,7 +6,7 @@
 /*   By: eniini <eniini@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 11:03:10 by alero             #+#    #+#             */
-/*   Updated: 2021/06/03 18:21:38 by eniini           ###   ########.fr       */
+/*   Updated: 2021/06/04 16:12:44 by alero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,10 +56,11 @@ int			main(int argc, char** argv)
 	*/
 	while(app->run)
 	{
-		keyevent(app, &e, &player, s);
+		keyevent(app, &e);
 
 		ft_bzero(app->buffer, SCREEN_HEIGHT * SCREEN_WIDTH); //clear buffer
 
+		check_collision(app, s);
 		raycast(app, s);
 		if (app->draw_ui)
 			drawmap(s, app);
@@ -67,7 +68,7 @@ int			main(int argc, char** argv)
 			*	SDL_LockTexture gives us the tex_pitch which is the 'true' size of drawn screen width
 			*	(how many pixels are drawn in one level).
 			*/
-		keyevent(app, &e, &player, s);
+//		keyevent(app, &e, &player, s);
 			//drawplayer(app, &player, s);
 		if(SDL_LockTexture(app->texture, NULL, (void **)&app->tex, &app->tex_pitch) < 0)
 				ft_getout(SDL_GetError());

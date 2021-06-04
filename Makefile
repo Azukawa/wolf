@@ -23,7 +23,8 @@ SRC_LIST =	main.c \
 		keyevent.c \
 		raycaster.c \
 		drawplayer.c \
-		fps_counter.c
+		fps_counter.c \
+		check_collision.c
 SRCS = $(addprefix $(SRC_DIR),$(SRC_LIST))
 OBJS = $(addprefix $(OBJ_DIR),$(SRC_LIST:.c=.o))
 
