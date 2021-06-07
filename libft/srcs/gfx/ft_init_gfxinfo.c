@@ -6,7 +6,7 @@
 /*   By: eniini <eniini@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/22 14:03:51 by eniini            #+#    #+#             */
-/*   Updated: 2021/06/03 15:57:46 by eniini           ###   ########.fr       */
+/*   Updated: 2021/06/04 15:05:00 by eniini           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ t_gfxinfo	*ft_init_1d_info(int w, int h, int bpp, unsigned char *c)
 		ft_putstr_fd(strerror(errno), STDERR_FILENO);
 		return (NULL);
 	}
-	info->img_w= w;
+	info->img_w = w;
 	info->img_h = h;
 	info->bpp = bpp;
 	info->one_d_addr = c;

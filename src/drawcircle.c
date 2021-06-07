@@ -6,7 +6,7 @@
 /*   By: eniini <eniini@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/26 15:39:14 by eniini            #+#    #+#             */
-/*   Updated: 2021/05/26 15:39:28 by eniini           ###   ########.fr       */
+/*   Updated: 2021/06/04 18:39:00 by eniini           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 *	rest are determined by symmetry. draw unique points until (x = y)
 *	choosing points closest to the radius of the circle.
 */
-void	draw_circle(t_app *wolf, t_point p, int r, int color)
+void	draw_circle(t_app *wolf, t_point p, int r, uint32_t color)
 {
 	int	x;
 	int	y;
@@ -50,7 +50,7 @@ void	draw_circle(t_app *wolf, t_point p, int r, int color)
 *	Instead of drawing individual pixels on symmetrical positions along the
 *	circle's radius, we draw lines from one end to its opposite.
 */
-void	draw_filled_circle(t_app *wolf, t_point p, int r, int color)
+void	draw_filled_circle(t_app *wolf, t_point p, int r, uint32_t color)
 {
 	int	x;
 	int	y;

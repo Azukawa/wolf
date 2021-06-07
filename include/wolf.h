@@ -28,6 +28,7 @@ typedef struct s_raycaster
 	int			precision;
 	double		ray_cos;
 	double		ray_sin;
+	t_gfxinfo	*walltex;
 }				t_raycaster;
 
 typedef struct s_app
@@ -93,9 +94,9 @@ void		drawmap(t_map *map, t_app *app);
 
 void		drawpixel(int x, int y, uint32_t *buffer, uint32_t color);
 
-void		draw_line(t_app *wolf, t_point p0, t_point p1, int color);
-void		draw_circle(t_app *wolf, t_point p, int r, int color);
-void		draw_filled_circle(t_app *wolf, t_point p, int r, int color);
+void		draw_line(t_app *wolf, t_point p0, t_point p1, uint32_t color);
+void		draw_circle(t_app *wolf, t_point p, int r, uint32_t color);
+void		draw_filled_circle(t_app *wolf, t_point p, int r, uint32_t color);
 
 void		raycast(t_app *app, t_map *map);
 

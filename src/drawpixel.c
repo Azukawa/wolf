@@ -6,7 +6,7 @@
 /*   By: eniini <eniini@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 11:00:27 by alero             #+#    #+#             */
-/*   Updated: 2021/06/02 23:26:58 by eniini           ###   ########.fr       */
+/*   Updated: 2021/06/07 14:54:57 by eniini           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,18 @@
 */
 uint32_t	argb_grayscale(uint32_t c)
 {
-	int8_t	a = c >> 24 & 255;
-	uint8_t	r = c >> 16 & 255;
-	uint8_t	g = c >> 8 & 255;
-	uint8_t	b = c & 255;
-	uint8_t	v = (0.2126 * r) + (0.7152 * g) + (0.0722 * b);
-	return (a << 24) | (v << 16) | (v << 8) | v;
+	uint8_t	a;
+	uint8_t	r;
+	uint8_t	g;
+	uint8_t	b;
+	uint8_t	v;
+
+	a = c >> 24 & 255;
+	r = c >> 16 & 255;
+	g = c >> 8 & 255;
+	b = c & 255;
+	v = (0.2126 * r) + (0.7152 * g) + (0.0722 * b);
+	return ((a << 24) | (v << 16) | (v << 8) | v);
 }
 
 /*
@@ -32,13 +38,19 @@ uint32_t	argb_grayscale(uint32_t c)
 */
 uint32_t	argb_realgrayscale(uint32_t c)
 {
-	int8_t	a = c >> 24 & 255;
-	uint8_t	r = c >> 16 & 255;
-	uint8_t	g = c >> 8 & 255;
-	uint8_t	b = c & 255;
-	uint8_t result = pow(0.2126 * pow(r ,2.4) + 0.7152 * pow(g, 2.4) + 0.0722
-		* pow(b, 2.4), 1 / 2.4);
-	return (a << 24) | (result << 16) | (result << 8) | result;
+	uint8_t	a;
+	uint8_t	r;
+	uint8_t	g;
+	uint8_t	b;
+	uint8_t	v;
+
+	a = c >> 24 & 255;
+	r = c >> 16 & 255;
+	g = c >> 8 & 255;
+	b = c & 255;
+	v = pow(0.2126 * pow(r, 2.4) + 0.7152 * pow(g, 2.4) + 0.0722
+			* pow(b, 2.4), 1 / 2.4);
+	return ((a << 24) | (v << 16) | (v << 8) | v);
 }
 
 	/*	Alternative solutions for more hue control:
@@ -54,10 +66,11 @@ uint32_t	argb_realgrayscale(uint32_t c)
 	*	buffer[i] = (color >> 24) & 255;
 	*/
 
-void		drawpixel(int x, int y, uint32_t *buffer, uint32_t color)
+void	drawpixel(int x, int y, uint32_t *buffer, uint32_t color)
 {
 	uint32_t	i;
+
 	i = (SCREEN_WIDTH * y) + x;
-	if (x < SCREEN_WIDTH && y < SCREEN_HEIGHT &&  x >= 0 && y >= 0)
+	if (x < SCREEN_WIDTH && y < SCREEN_HEIGHT && x >= 0 && y >= 0)
 		buffer[i] = color;
 }

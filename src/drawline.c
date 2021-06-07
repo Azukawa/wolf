@@ -6,7 +6,7 @@
 /*   By: eniini <eniini@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/26 13:12:29 by eniini            #+#    #+#             */
-/*   Updated: 2021/05/28 20:01:38 by eniini           ###   ########.fr       */
+/*   Updated: 2021/06/04 18:38:03 by eniini           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ static void	init_points(t_point p0, t_point p1, t_bool *flip)
 *	every direction. After that, drawline() plots
 *	a line of pixels from [point0] to [point1].
 */
-void	draw_line(t_app *wolf, t_point p0, t_point p1, int color)
+void	draw_line(t_app *wolf, t_point p0, t_point p1, uint32_t color)
 {
 	int		derror;
 	int		error;
