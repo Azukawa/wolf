@@ -6,7 +6,7 @@
 /*   By: eniini <eniini@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 10:53:13 by alero             #+#    #+#             */
-/*   Updated: 2021/06/01 12:37:22 by alero            ###   ########.fr       */
+/*   Updated: 2021/06/07 17:22:04 by alero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,20 +23,24 @@ int	checkmap(char *str, t_map *s)
 	int		fd;
 	int		ret;
 	int		i;
+	int		wcount;
 	char	*output;
 
 	i = 0;
 	output = NULL;
-	if ((fd = open(str, O_RDONLY)) == -1)
+	fd = open(str, O_RDONLY);
+	if (fd == -1)
 		return (0);
-	while ((ret = get_next_line(fd, &output)) > 0)
+	ret = get_next_line(fd, &output);
+	while (ret)
 	{
-		if (ft_wordcount(output, ',') > (size_t)s->w)
-			s->w = ft_wordcount(output, ',');
+		wcount = ft_wordcount(output, ',');
+		if (wcount > s->w)
+			s->w = wcount;
 		i++;
 		free(output);
+		ret = get_next_line(fd, &output);
 	}
 	s->h = i;
-//	free(output);
 	return (0);
 }
