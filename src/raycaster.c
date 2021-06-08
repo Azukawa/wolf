@@ -6,7 +6,7 @@
 /*   By: eniini <eniini@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/27 13:53:10 by eniini            #+#    #+#             */
-/*   Updated: 2021/06/08 12:45:56 by eniini           ###   ########.fr       */
+/*   Updated: 2021/06/08 20:03:42 by eniini           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,5 +104,7 @@ void	raycast(t_app *app, t_map *map)
 		draw_line(app, (t_point){wall_end, ray_count}, (t_point){SCREEN_HEIGHT, ray_count}, DEV_FLOORCOL);
 		app->rc.ray_angle += app->rc.raycast_unit;
 		ray_count++;  //move the ray angle until whole FOV is drawn
+
+		//testing new enviroment !
 	}
 }
