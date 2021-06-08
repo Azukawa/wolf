@@ -6,12 +6,12 @@
 /*   By: eniini <eniini@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/27 10:53:01 by alero             #+#    #+#             */
-/*   Updated: 2021/06/08 18:35:00 by alero            ###   ########.fr       */
+/*   Updated: 2021/06/08 18:42:41 by alero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/wolf.h"
-void	key_forward(double *new_pos_x, double *new_pos_y, t_app *app)
+static void	key_forward(double *new_pos_x, double *new_pos_y, t_app *app)
 {
 	*new_pos_x = app->player.pos_x + cos(app->player.angle * \
 			RAD_CON) * app->player.move_u;
@@ -21,7 +21,7 @@ void	key_forward(double *new_pos_x, double *new_pos_y, t_app *app)
 	app->player.pos_y = *new_pos_y;
 }
 
-void	key_backward(double *new_pos_x, double *new_pos_y, t_app *app)
+static void	key_backward(double *new_pos_x, double *new_pos_y, t_app *app)
 {
 	*new_pos_x = app->player.pos_x - cos(app->player.angle * \
 		RAD_CON) * app->player.move_u;
