@@ -6,7 +6,7 @@
 /*   By: eniini <eniini@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/27 10:53:01 by alero             #+#    #+#             */
-/*   Updated: 2021/06/08 18:42:41 by alero            ###   ########.fr       */
+/*   Updated: 2021/06/08 18:50:26 by alero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,8 @@ void	keyevent(t_app *app, SDL_Event *e)
 
 	while (SDL_PollEvent(e))
 	{
-		if (e->type == SDL_KEYDOWN && e->key.keysym.sym == SDLK_x)
+		if (e->type == SDL_KEYDOWN && (e->key.keysym.sym == SDLK_x \
+					|| e->key.keysym.sym == SDLK_ESCAPE))
 			app->run = 0;
 		if (e->type == SDL_KEYDOWN && e->key.keysym.sym == SDLK_w)
 			key_forward(&new_pos_x, &new_pos_y, app);
