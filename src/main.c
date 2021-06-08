@@ -6,7 +6,7 @@
 /*   By: eniini <eniini@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 11:03:10 by alero             #+#    #+#             */
-/*   Updated: 2021/06/04 16:12:44 by alero            ###   ########.fr       */
+/*   Updated: 2021/06/08 11:10:13 by eniini           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,24 +36,7 @@ int			main(int argc, char** argv)
 	t_gfxinfo *bmp = ft_load_bmp("resources/testpattern.bmp");
 	if (!bmp)
 		ft_printf("failed to load bmp file");
-	ft_create_bmp("output.bmp", bmp);
-	/*
-	uint32_t amask = 0;
-	uint32_t rmask = 0xff0000;
-	uint32_t gmask = 0x00ff00;
-	uint32_t bmask = 0x0000ff;
-	SDL_Surface *bmpsurf = SDL_CreateRGBSurfaceFrom(bmp->one_d_addr, bmp->img_width, bmp->img_height, sizeof(unsigned char), 3 * bmp->img_width, rmask, gmask, bmask, amask);
-	if (!bmpsurf)
-		ft_getout(SDL_GetError());
-	SDL_Texture *bmptex = SDL_CreateTextureFromSurface(app->renderer, bmpsurf);
-	if (!bmptex)
-		ft_getout(SDL_GetError());
-	SDL_Rect	bmprct;
-	bmprct.h = bmp->img_height;
-	bmprct.w = bmp->img_width;
-	bmprct.x = 0;
-	bmprct.y = 0;
-	*/
+	app->rc.walltex = bmp;
 	while(app->run)
 	{
 		keyevent(app, &e);
@@ -76,9 +59,7 @@ int			main(int argc, char** argv)
 		SDL_UnlockTexture(app->texture);
 		if (SDL_RenderCopy(app->renderer, app->texture, NULL, NULL) < 0)
 			ft_getout(SDL_GetError());
-		//if (SDL_RenderCopy(app->renderer, bmptex, NULL, &bmprct) < 0)
-		//	ft_getout(SDL_GetError());
-		fps_counter();
+		fps_counter(app);
 		SDL_RenderPresent(app->renderer);
 	}
 	cleanup(app);

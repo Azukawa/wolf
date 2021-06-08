@@ -79,6 +79,16 @@ typedef struct s_map_player
 # define HALF_SW 300
 # define HALF_SH 200
 
+
+// generated w/ paletton.com
+# define DEV_WALLCOL_N 0xff2f5376 //blue
+# define DEV_WALLCOL_S 0xffb68640 //yellow
+# define DEV_WALLCOL_W 0xffb65440 //red
+# define DEV_WALLCOL_E 0xff2e844e //green
+# define DEV_CEILCOL 0xffa8d7d7
+# define DEV_FLOORCOL 0xff22283e
+# define DEV_SHADECOL 0xff211b4c
+
 void		ft_print2dcarr(char **arr);
 char		*linetogrid(char *ret, char *out, int x);
 int			readmap(char *str, t_map *s);
@@ -103,7 +113,7 @@ void		raycast(t_app *app, t_map *map);
 void		keyevent(t_app *app, SDL_Event *e);
 void		drawplayer(t_app *app, t_map_player *player, t_map *map);
 
-void		fps_counter(void);
+void		fps_counter(t_app *app);
 uint32_t	argb_grayscale(uint32_t c);
 uint32_t	argb_realgrayscale(uint32_t c);
 void		check_collision(t_app *app, t_map *map);
