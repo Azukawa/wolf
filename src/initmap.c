@@ -6,7 +6,7 @@
 /*   By: eniini <eniini@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 10:54:43 by alero             #+#    #+#             */
-/*   Updated: 2021/06/09 16:51:11 by alero            ###   ########.fr       */
+/*   Updated: 2021/06/09 17:12:10 by alero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
  *	based  on map.x and map.y.
  *	Each row is zeroed,
  *	terminators are placed.
- *	_9 bytes are lost somewhere_
  */
 int	initmap(t_map *s)
 {
