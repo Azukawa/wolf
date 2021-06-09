@@ -6,7 +6,7 @@
 /*   By: eniini <eniini@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 10:54:43 by alero             #+#    #+#             */
-/*   Updated: 2021/06/01 14:02:41 by alero            ###   ########.fr       */
+/*   Updated: 2021/06/08 15:49:40 by alero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
  *	based  on map.x and map.y.
  *	Each row is zeroed,
  *	terminators are placed.
+ *	_9 bytes are lost somewhere_
  */
 int	initmap(t_map *s)
 {
@@ -27,7 +28,6 @@ int	initmap(t_map *s)
 	while (i <= s->h)
 	{
 		s->map[i] = (char *)malloc(sizeof(char) * (s->w) + 1);
-		//9 bytes from this are lost somewhere
 		ft_bzero(s->map[i], s->w + 1);
 		i++;
 	}
