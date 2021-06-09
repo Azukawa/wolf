@@ -6,7 +6,7 @@
 /*   By: eniini <eniini@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/27 13:53:10 by eniini            #+#    #+#             */
-/*   Updated: 2021/06/09 14:25:58 by eniini           ###   ########.fr       */
+/*   Updated: 2021/06/09 16:12:09 by alero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ static void	init_raycast_vars(t_app *app)
 	app->rc.precision = 64;
 }
 
-
 static void	draw_tex_line(t_app *app, int wall_s, int wall_e, int ray_i)
 {
 	int	y;
@@ -34,26 +33,13 @@ static void	draw_tex_line(t_app *app, int wall_s, int wall_e, int ray_i)
 	y = 0;
 	while (y < app->rc.walltex->img_h)
 	{
-		pixel = (ray_i * app->rc.walltex->img_w + y * (app->rc.walltex->bpp / 8));
-		drawpixel(ray_i, y, app->buffer, (uint32_t)app->rc.walltex->one_d_addr[pixel]);
+		pixel = (ray_i * app->rc.walltex->img_w + y * \
+				(app->rc.walltex->bpp / 8));
+		drawpixel(ray_i, y, app->buffer, \
+				(uint32_t)app->rc.walltex->one_d_addr[pixel]);
 		y++;
 	}
 }
-/*
-int	texturepositionx = (int)floor(fmod((app->rc.walltex->img_w * (ray.x + ray.y)), (double)app->rc.walltex->img_w));
-double	y_incrementer = (SCREEN_WIDTH * 2) / app->rc.walltex->img_h;
-double	y = wall_s;
-double	x = ray_i;
-for (int i = 0; i < app->rc.walltex->img_h; i++)
-{
-	unsigned char	*r = app->rc.walltex->one_d_addr[i * app->rc.walltex->img_w + texturepositionx * (app->rc.walltex->bpp / 8)];
-	unsigned char	*g = app->rc.walltex->one_d_addr[i * app->rc.walltex->img_w + texturepositionx * (app->rc.walltex->bpp / 8) + 1];
-	unsigned char	*b = app->rc.walltex->one_d_addr[i * app->rc.walltex->img_w + texturepositionx * (app->rc.walltex->bpp / 8) + 2];
-	uint32_t		color = 0xff | (*r << 8) | (*g << 16) | (*b << 24);
-	ft_printf("%u\n", color);
-	draw_line(app, (t_point){x, y}, (t_point){x, y + y_incrementer}, color);
-	y += y_incrementer;
-}*/
 
 /*
 *	NOTE: test what happens if distance > HALF_SH and/or SCREEN_HEIGHT!
@@ -80,9 +66,8 @@ static void	draw_ray(t_app *app, double dist, int ray_i, t_bool side)
 		draw_line(app, (t_point){wall_s, ray_i}, (t_point){wall_e, ray_i},
 			ft_argb_lerp(DEV_WALL_S, DEV_SHADE, dist * 0.1));
 	else
-		draw_tex_line(app, wall_s, wall_e, ray_i);
-		//draw_line(app, (t_point){wall_s, ray_i}, (t_point){wall_e, ray_i},
-		//	ft_argb_lerp(DEV_WALL_N, DEV_SHADE, dist * 0.1));
+		draw_line(app, (t_point){wall_s, ray_i}, (t_point){wall_e, ray_i},
+			ft_argb_lerp(DEV_WALL_N, DEV_SHADE, dist * 0.1));
 	draw_line(app, (t_point){wall_e, ray_i},
 		(t_point){SCREEN_HEIGHT, ray_i}, DEV_FLOOR);
 }
@@ -125,7 +110,7 @@ void	raycast(t_app *app, t_map *map)
 		app->rc.ray_sin = sin(app->rc.ray_d * RAD_CON) / app->rc.precision;
 		side = project_ray(app, map, &ray);
 		dist = sqrt((app->player.pos_x - ray.x) * (app->player.pos_x - ray.x)
-			+ (app->player.pos_y - ray.y) * (app->player.pos_y - ray.y));
+				+ (app->player.pos_y - ray.y) * (app->player.pos_y - ray.y));
 		dist *= cos((app->rc.ray_d - app->player.angle) * RAD_CON);
 		draw_ray(app, dist, ray_i, side);
 		app->rc.ray_d += app->rc.raycast_unit;
