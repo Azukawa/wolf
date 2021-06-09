@@ -23,7 +23,7 @@ typedef struct s_player
 
 typedef struct s_raycaster
 {
-	double		ray_angle;
+	double		ray_d;
 	double		raycast_unit;
 	int			precision;
 	double		ray_cos;
@@ -81,13 +81,13 @@ typedef struct s_map_player
 
 
 // generated w/ paletton.com
-# define DEV_WALLCOL_N 0xff2f5376 //blue
-# define DEV_WALLCOL_S 0xffb68640 //yellow
-# define DEV_WALLCOL_W 0xffb65440 //red
-# define DEV_WALLCOL_E 0xff2e844e //green
-# define DEV_CEILCOL 0xffa8d7d7
-# define DEV_FLOORCOL 0xff22283e
-# define DEV_SHADECOL 0xff211b4c
+# define DEV_WALL_N 0xff2f5376
+# define DEV_WALL_S 0xffb68640
+# define DEV_WALL_W 0xffb65440
+# define DEV_WALL_E 0xff2e844e
+# define DEV_CEIL 0xffa8d7d7
+# define DEV_FLOOR 0xff22283e
+# define DEV_SHADE 0xff211b4c
 
 void		ft_print2dcarr(char **arr);
 char		*linetogrid(char *ret, char *out, int x);
