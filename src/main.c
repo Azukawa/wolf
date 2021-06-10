@@ -6,7 +6,7 @@
 /*   By: eniini <eniini@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 11:03:10 by alero             #+#    #+#             */
-/*   Updated: 2021/06/10 16:14:12 by alero            ###   ########.fr       */
+/*   Updated: 2021/06/10 17:26:54 by alero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,35 @@ static void	mainloop(t_map *s, t_app *app, SDL_Event *e)
 	}
 }
 
+static int	define_player_pos(t_map *map, t_app *app)
+{
+	int	x;
+	int	y;
+	int	boool;
+
+	x = -1;
+	y = -1;
+	boool = 0;
+	while (++y < map->h)
+	{
+		while (++x < map->w)
+		{
+			if (map->map[y][x] == '$')
+			{
+				if (boool == 0)
+				{
+					app->player.pos_x = x + 0.5;
+					app->player.pos_y = y + 0.5;
+					boool = 1;
+				}
+				map->map[y][x] = '0';
+			}
+		}
+		x = -1;
+	}
+	return ((boool == 0) * -1);
+}
+
 int	main(int	argc, char	**argv)
 {
 	t_map			*s;
@@ -47,12 +76,13 @@ int	main(int	argc, char	**argv)
 	app = ft_memalloc(sizeof(*app));
 	init_SDL(app);
 	init_player_vars(app);
-	x = buildmap(argv[1], s);
-	if (x == -1)
-		ft_getout("File does not exist or is of incorrect type.");
 	app->screenSurface = SDL_GetWindowSurface(app->window);
 	bmp = ft_load_bmp("resources/testpattern.bmp");
 	app->rc.walltex = bmp;
+	x = buildmap(argv[1], s);
+	x = define_player_pos(s, app);
+	if (x == -1)
+		ft_getout("File does not exist or is of incorrect type.");
 	mainloop(s, app, &e);
 	cleanup(app);
 	ft_free_arr(s->map);
