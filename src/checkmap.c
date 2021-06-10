@@ -6,7 +6,7 @@
 /*   By: eniini <eniini@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 10:53:13 by alero             #+#    #+#             */
-/*   Updated: 2021/06/07 17:22:04 by alero            ###   ########.fr       */
+/*   Updated: 2021/06/10 14:44:18 by alero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	checkmap(char *str, t_map *s)
 	output = NULL;
 	fd = open(str, O_RDONLY);
 	if (fd == -1)
-		return (0);
+		return (-1);
 	ret = get_next_line(fd, &output);
 	while (ret)
 	{
@@ -42,5 +42,5 @@ int	checkmap(char *str, t_map *s)
 		ret = get_next_line(fd, &output);
 	}
 	s->h = i;
-	return (0);
+	return (1);
 }

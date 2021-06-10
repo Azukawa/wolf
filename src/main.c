@@ -6,7 +6,7 @@
 /*   By: eniini <eniini@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 11:03:10 by alero             #+#    #+#             */
-/*   Updated: 2021/06/09 14:52:01 by alero            ###   ########.fr       */
+/*   Updated: 2021/06/10 16:14:12 by alero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,15 +39,17 @@ int	main(int	argc, char	**argv)
 	t_app			*app;
 	SDL_Event		e;
 	t_gfxinfo		*bmp;
+	int				x;
 
 	if (argc != 2)
-		ft_printf("Wrong number of arguments.\n");
+		ft_getout("Wrong number of arguments.");
 	s = ft_memalloc(sizeof(*s));
 	app = ft_memalloc(sizeof(*app));
-	app->run = 1;
 	init_SDL(app);
 	init_player_vars(app);
-	buildmap(argv[1], s);
+	x = buildmap(argv[1], s);
+	if (x == -1)
+		ft_getout("File does not exist or is of incorrect type.");
 	app->screenSurface = SDL_GetWindowSurface(app->window);
 	bmp = ft_load_bmp("resources/testpattern.bmp");
 	app->rc.walltex = bmp;
@@ -57,6 +59,5 @@ int	main(int	argc, char	**argv)
 	free(s);
 	free(app->buffer);
 	free(app);
-	ft_printf("Ran untill end\n");
 	return (1);
 }

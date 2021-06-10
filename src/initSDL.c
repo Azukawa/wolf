@@ -6,7 +6,7 @@
 /*   By: eniini <eniini@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 10:56:35 by eniini            #+#    #+#             */
-/*   Updated: 2021/06/08 17:21:04 by alero            ###   ########.fr       */
+/*   Updated: 2021/06/10 16:12:04 by alero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void	init_SDL(t_app *app)
 	int		renderFlags;
 	int		windowFlags;
 
+	app->run = 1;
 	renderFlags = SDL_RENDERER_ACCELERATED;
 	windowFlags = 0;
 	app->buffer = ft_memalloc(SCREEN_WIDTH * SCREEN_HEIGHT * sizeof(uint32_t));
