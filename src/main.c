@@ -6,7 +6,7 @@
 /*   By: eniini <eniini@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 11:03:10 by alero             #+#    #+#             */
-/*   Updated: 2021/06/10 17:26:54 by alero            ###   ########.fr       */
+/*   Updated: 2021/06/11 15:03:16 by alero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ int	main(int	argc, char	**argv)
 	app->rc.walltex = bmp;
 	x = buildmap(argv[1], s);
 	x = define_player_pos(s, app);
-	if (x == -1)
+	if (x == -1 || s->w < 3 || s->h < 3)
 		ft_getout("File does not exist or is of incorrect type.");
 	mainloop(s, app, &e);
 	cleanup(app);
