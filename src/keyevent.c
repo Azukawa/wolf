@@ -6,7 +6,7 @@
 /*   By: eniini <eniini@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/27 10:53:01 by alero             #+#    #+#             */
-/*   Updated: 2021/06/08 18:50:26 by alero            ###   ########.fr       */
+/*   Updated: 2021/06/11 16:51:51 by alero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,14 @@ static void	key_backward(double *new_pos_x, double *new_pos_y, t_app *app)
 	app->player.pos_y = *new_pos_y;
 }
 
+static void	key_ui(t_app *app)
+{
+	if (app->draw_ui)
+		app->draw_ui = FALSE;
+	else
+		app->draw_ui = TRUE;
+}
+
 void	keyevent(t_app *app, SDL_Event *e)
 {
 	double	new_pos_x;
@@ -50,11 +58,9 @@ void	keyevent(t_app *app, SDL_Event *e)
 		if (e->type == SDL_KEYDOWN && e->key.keysym.sym == SDLK_d)
 			app->player.angle += app->player.rotation_u;
 		if (e->type == SDL_KEYDOWN && e->key.keysym.sym == SDLK_i)
-		{
-			if (app->draw_ui)
-				app->draw_ui = FALSE;
-			else
-				app->draw_ui = TRUE;
-		}
+			key_ui(app);
+		if (e->type == SDL_WINDOWEVENT && e->window.event == \
+				SDL_WINDOWEVENT_CLOSE)
+			app->run = 0;
 	}
 }
