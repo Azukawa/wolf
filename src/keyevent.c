@@ -6,7 +6,7 @@
 /*   By: eniini <eniini@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/27 10:53:01 by alero             #+#    #+#             */
-/*   Updated: 2021/06/11 16:51:51 by alero            ###   ########.fr       */
+/*   Updated: 2021/06/11 17:53:53 by alero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,13 +49,13 @@ void	keyevent(t_app *app, SDL_Event *e)
 		if (e->type == SDL_KEYDOWN && (e->key.keysym.sym == SDLK_x \
 					|| e->key.keysym.sym == SDLK_ESCAPE))
 			app->run = 0;
-		if (e->type == SDL_KEYDOWN && e->key.keysym.sym == SDLK_w)
+		if (e->type == SDL_KEYDOWN && e->key.keysym.sym == SDLK_UP)
 			key_forward(&new_pos_x, &new_pos_y, app);
-		if (e->type == SDL_KEYDOWN && e->key.keysym.sym == SDLK_s)
+		if (e->type == SDL_KEYDOWN && e->key.keysym.sym == SDLK_DOWN)
 			key_backward(&new_pos_x, &new_pos_y, app);
-		if (e->type == SDL_KEYDOWN && e->key.keysym.sym == SDLK_a)
+		if (e->type == SDL_KEYDOWN && e->key.keysym.sym == SDLK_LEFT)
 			app->player.angle -= app->player.rotation_u;
-		if (e->type == SDL_KEYDOWN && e->key.keysym.sym == SDLK_d)
+		if (e->type == SDL_KEYDOWN && e->key.keysym.sym == SDLK_RIGHT)
 			app->player.angle += app->player.rotation_u;
 		if (e->type == SDL_KEYDOWN && e->key.keysym.sym == SDLK_i)
 			key_ui(app);
