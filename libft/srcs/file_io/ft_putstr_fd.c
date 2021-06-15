@@ -22,6 +22,6 @@ void	ft_putstr_fd(char const *s, int fd)
 		i = 0;
 		while (s[i] != '\0')
 			i++;
-		write(fd, s, i);
+		(void)!write(fd, s, i);
 	}
 }

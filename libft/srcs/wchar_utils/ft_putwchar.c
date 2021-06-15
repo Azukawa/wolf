@@ -45,7 +45,7 @@ static void	write_utf8(wint_t c, int size, int fd)
 	else
 		tmp[size - 2] = ((c >> 6) & 0x3F) | 0x80;
 	tmp[size - 1] = (c & 0x3F) | 0x80;
-	write(fd, &tmp, size);
+	(void)!write(fd, &tmp, size);
 	free(tmp);
 }
 
@@ -62,5 +62,5 @@ void	ft_putwchar(wint_t wc, int fd)
 	else if (wc >= 0x80)
 		write_utf8(wc, 2, fd);
 	else
-		write(fd, &wc, 1);
+		(void)!write(fd, &wc, 1);
 }

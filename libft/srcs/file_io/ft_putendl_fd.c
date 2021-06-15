@@ -24,7 +24,7 @@ void	ft_putendl_fd(char const *s, int fd)
 		i = 0;
 		while (s[i] != '\0')
 			i++;
-		write(fd, s, i);
-		write(fd, c, 1);
+		(void)!write(fd, s, i);
+		(void)!write(fd, c, 1);
 	}
 }

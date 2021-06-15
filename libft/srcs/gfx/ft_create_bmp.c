@@ -116,10 +116,10 @@ void	write_into_file(int fd, t_gfxinfo *info, int paddingsize)
 	{
 		while (i < info->img_h)
 		{
-			write(fd, (unsigned char *)info->one_d_addr
+			(void)!write(fd, (unsigned char *)info->one_d_addr
 				+ (i * (info->img_w * info->bpp / 8)),
 				(info->bpp / 8) * info->img_w);
-			write(fd, padding, paddingsize);
+			(void)!write(fd, padding, paddingsize);
 			i++;
 		}
 	}
@@ -127,9 +127,9 @@ void	write_into_file(int fd, t_gfxinfo *info, int paddingsize)
 	{
 		while (info->two_d_addr[i])
 		{
-			write(fd, (unsigned int *)info->two_d_addr[i],
+			(void)!write(fd, (unsigned int *)info->two_d_addr[i],
 				(info->bpp / 8) * info->img_w);
-			write(fd, padding, paddingsize);
+			(void)!write(fd, padding, paddingsize);
 			i++;
 		}
 	}
@@ -146,8 +146,8 @@ int	ft_create_bmp(char *filename, t_gfxinfo *i)
 	fd = open(filename, O_APPEND | O_TRUNC | O_CREAT | O_WRONLY, S_IRWXU);
 	if (fd < 0)
 		return (-1);
-	write(fd, cr_bmap_fileheader(i->img_w, stride), 14);
-	write(fd, cr_bmap_infoheader(-(i->img_h), i->img_w, i->bpp), 40);
+	(void)!write(fd, cr_bmap_fileheader(i->img_w, stride), 14);
+	(void)!write(fd, cr_bmap_infoheader(-(i->img_h), i->img_w, i->bpp), 40);
 	write_into_file(fd, i, paddingsize);
 	if (close(fd))
 		return (-1);

@@ -6,7 +6,7 @@
 /*   By: eniini <eniini@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/10 16:06:51 by eniini            #+#    #+#             */
-/*   Updated: 2020/06/10 16:10:52 by eniini           ###   ########.fr       */
+/*   Updated: 2021/06/15 15:09:09 by alero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,5 @@
 
 void	ft_putchar_fd(char c, int fd)
 {
-	write(fd, &c, 1);
+	(void)!write(fd, &c, 1);
 }
