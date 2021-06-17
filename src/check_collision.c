@@ -6,7 +6,7 @@
 /*   By: alero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/04 16:11:41 by alero             #+#    #+#             */
-/*   Updated: 2021/06/07 16:58:40 by alero            ###   ########.fr       */
+/*   Updated: 2021/06/17 17:04:38 by alero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,22 +35,46 @@ static void	var_checks(t_app *app, t_map *map)
 		app->player.pos_y = 0.;
 }
 
+static int	check_way(t_app *app, t_map *map)
+{
+	int	i;
+
+	i = 0;
+	if ((map->map[(int)floor(app->player.pos_y)] \
+	[(int)floor(app->player.pos_x)] == '0'))
+		i = 1;
+	if ((map->map[(int)floor(app->player.pos_y + 0.2)] \
+	[(int)floor(app->player.pos_x + 0.2)] == '1'))
+		return (0);
+	if ((map->map[(int)floor(app->player.pos_y - 0.2)] \
+	[(int)floor(app->player.pos_x - 0.2)] == '1'))
+		return (0);
+	if ((map->map[(int)floor(app->player.pos_y + 0.2)] \
+	[(int)floor(app->player.pos_x - 0.2)] == '1'))
+		return (0);
+	if ((map->map[(int)floor(app->player.pos_y - 0.2)] \
+	[(int)floor(app->player.pos_x + 0.2)] == '1'))
+		return (0);
+	return (i);
+}
+
 void	check_collision(t_app *app, t_map *map)
 {
-	static double	old_pos_x;
-	static double	old_pos_y;
+	static t_fpoint	old_pos;
+	int				var;
 
+	var = 0;
 	var_checks(app, map);
-	if (map->map[(int)floor(app->player.pos_y)] \
-	[(int)floor(app->player.pos_x)] == '0')
+	var = check_way(app, map);
+	if (var > 0)
 	{
-		old_pos_x = app->player.pos_x;
-		old_pos_y = app->player.pos_y;
+		old_pos.x = app->player.pos_x;
+		old_pos.y = app->player.pos_y;
 	}
 	else
-	{	
+	{
 		ft_printf("BLOCKED!\n");
-		app->player.pos_x = old_pos_x;
-		app->player.pos_y = old_pos_y;
+		app->player.pos_x = old_pos.x;
+		app->player.pos_y = old_pos.y;
 	}
 }
