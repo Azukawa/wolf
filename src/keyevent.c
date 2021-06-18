@@ -6,7 +6,7 @@
 /*   By: eniini <eniini@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/27 10:53:01 by alero             #+#    #+#             */
-/*   Updated: 2021/06/11 17:53:53 by alero            ###   ########.fr       */
+/*   Updated: 2021/06/18 18:02:53 by alero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,14 @@ static void	key_ui(t_app *app)
 		app->draw_ui = TRUE;
 }
 
+static void	key_tex(t_app *app)
+{
+	if (app->draw_tex)
+		app->draw_tex = FALSE;
+	else
+		app->draw_tex = TRUE;
+}
+
 void	keyevent(t_app *app, SDL_Event *e)
 {
 	double	new_pos_x;
@@ -62,5 +70,7 @@ void	keyevent(t_app *app, SDL_Event *e)
 		if (e->type == SDL_WINDOWEVENT && e->window.event == \
 				SDL_WINDOWEVENT_CLOSE)
 			app->run = 0;
+		if (e->type == SDL_KEYDOWN && e->key.keysym.sym == SDLK_z)
+			key_tex(app);
 	}
 }

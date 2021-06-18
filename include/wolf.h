@@ -55,6 +55,7 @@ typedef struct s_app
 	int				run;
 	int				tex_pitch;
 	t_bool			draw_ui;
+	t_bool			draw_tex;
 }					t_app;
 
 typedef struct s_map

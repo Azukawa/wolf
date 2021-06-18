@@ -6,7 +6,7 @@
 /*   By: eniini <eniini@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/27 13:53:10 by eniini            #+#    #+#             */
-/*   Updated: 2021/06/18 17:10:15 by eniini           ###   ########.fr       */
+/*   Updated: 2021/06/18 18:03:36 by alero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ static void	draw_tex_line(t_app *app, int ray_i, double dist, SDL_Surface *tex)
 *	are then filled with draw_line() calls. Raycasted walls will have
 *	different coloring/texturing depending on their relation to the player.
 */
-/*
+
 static void	draw_ray(t_app *app, double dist, int ray_i, t_bool side)
 {
 	int	wall_s;
@@ -94,7 +94,7 @@ static void	draw_ray(t_app *app, double dist, int ray_i, t_bool side)
 			ft_argb_lerp(DEV_WALL_N, SHADE, dist * 0.1));
 	draw_line(app, (t_point){wall_e, ray_i},
 		(t_point){SCREEN_HEIGHT, ray_i}, DEV_FLOOR);
-}*/
+}
 
 static void	draw_tex_ray(t_app *app, double dist, int ray_i, t_bool side)
 {
@@ -170,6 +170,7 @@ static void	calc_texpos(t_app *app, t_bool side, double dist, t_fpoint *r)
 *	Projects rays for the length of the player's FOV using trigonometry
 *	and calculates the distance between ray's origin and the wall it hits.
 */
+
 void	raycast(t_app *app, t_map *map)
 {
 	t_fpoint	ray;
@@ -190,7 +191,10 @@ void	raycast(t_app *app, t_map *map)
 				+ (app->player.pos_y - ray.y) * (app->player.pos_y - ray.y));
 		dist *= cos((app->rc.ray_d - app->player.angle) * RAD_CON);
 		calc_texpos(app, side, dist, &ray);
-		draw_tex_ray(app, dist, ray_i, side);
+		if (app->draw_tex == TRUE)
+			draw_tex_ray(app, dist, ray_i, side);
+		else
+			draw_ray(app, dist, ray_i, side);
 		app->rc.ray_d += app->rc.raycast_unit;
 		ray_i++;
 	}
