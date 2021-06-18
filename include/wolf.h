@@ -21,6 +21,14 @@ typedef struct s_player
 	double		rotation_u;
 }				t_player;
 
+typedef struct s_texlib
+{
+	SDL_Surface	*walltex_n;
+	SDL_Surface	*walltex_s;
+	SDL_Surface	*walltex_w;
+	SDL_Surface	*walltex_e;
+}				t_texlib;
+
 typedef struct s_raycaster
 {
 	double		ray_d;
@@ -28,7 +36,9 @@ typedef struct s_raycaster
 	int			precision;
 	double		ray_cos;
 	double		ray_sin;
-	t_gfxinfo	*walltex;
+	int			wall_s;
+	int			wall_e;
+	int			tex_x;
 }				t_raycaster;
 
 typedef struct s_app
@@ -41,6 +51,7 @@ typedef struct s_app
 	uint32_t		*tex;
 	t_player		player;
 	t_raycaster		rc;
+	t_texlib		texlib;
 	int				run;
 	int				tex_pitch;
 	t_bool			draw_ui;
@@ -71,23 +82,31 @@ typedef struct s_map_player
 	float			dir;
 }					t_map_player;
 
-# define WOLF_HEADER "Wolf3d by esukava & eniini"
+# define WOLF_HEADER	"Wolf3d by esukava & eniini"
 
-# define SCREEN_WIDTH 600
-# define SCREEN_HEIGHT 400
+# define SCREEN_WIDTH	600
+# define SCREEN_HEIGHT	400
 
-# define HALF_SW 300
-# define HALF_SH 200
+# define HALF_SW	300
+# define HALF_SH	200
 
+# define WALLTEX_H	512
+# define WALLTEX_W	512
+# define TEX_BPP	4
 
 // generated w/ paletton.com
-# define DEV_WALL_N 0xff2f5376
-# define DEV_WALL_S 0xffb68640
-# define DEV_WALL_W 0xffb65440
-# define DEV_WALL_E 0xff2e844e
-# define DEV_CEIL 0xffa8d7d7
-# define DEV_FLOOR 0xff22283e
-# define DEV_SHADE 0xff211b4c
+# define DEV_WALL_N	0xff2f5376
+# define DEV_WALL_S	0xffb68640
+# define DEV_WALL_W	0xffb65440
+# define DEV_WALL_E	0xff2e844e
+# define DEV_CEIL	0xffa8d7d7
+# define DEV_FLOOR	0xff22283e
+# define SHADE	0xff211b4c
+
+# define WALL_N	"resources/techwall2_teal1.bmp"
+# define WALL_S	"resources/techwall3_blu1.bmp"
+# define WALL_W	"resources/techwall4_red1.bmp"
+# define WALL_E	"resources/techwall4_ylw1.bmp"
 
 void		ft_print2dcarr(char **arr);
 char		*linetogrid(char *ret, char *out, int x);
@@ -117,4 +136,5 @@ void		fps_counter(t_app *app);
 uint32_t	argb_grayscale(uint32_t c);
 uint32_t	argb_realgrayscale(uint32_t c);
 void		check_collision(t_app *app, t_map *map);
+
 #endif

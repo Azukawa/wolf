@@ -6,11 +6,11 @@
 /*   By: eniini <eniini@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 10:56:35 by eniini            #+#    #+#             */
-/*   Updated: 2021/06/10 17:13:32 by alero            ###   ########.fr       */
+/*   Updated: 2021/06/18 17:03:51 by eniini           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/wolf.h"
+#include "wolf.h"
 
 void	init_SDL(t_app *app)
 {
@@ -47,6 +47,6 @@ void	init_player_vars(t_app *app)
 	app->player.pos_y = 3.;
 	app->player.angle = 45.;
 	app->player.fov = 60;
-	app->player.move_u = 0.5;
-	app->player.rotation_u = 5.0;
+	app->player.move_u = 0.1;
+	app->player.rotation_u = 1.0;
 }
