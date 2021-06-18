@@ -6,11 +6,11 @@
 /*   By: eniini <eniini@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 11:01:28 by alero             #+#    #+#             */
-/*   Updated: 2021/06/08 15:40:33 by alero            ###   ########.fr       */
+/*   Updated: 2021/06/18 18:32:14 by eniini           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/wolf.h"
+#include "wolf.h"
 
 /*
  *		This funtion draws a square.

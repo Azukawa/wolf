@@ -22,6 +22,7 @@ SRC_LIST =	main.c \
 		drawcircle.c \
 		keyevent.c \
 		raycaster.c \
+		ray_drawing.c \
 		drawplayer.c \
 		fps_counter.c \
 		check_collision.c

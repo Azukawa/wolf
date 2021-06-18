@@ -6,11 +6,11 @@
 /*   By: eniini <eniini@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 10:54:43 by alero             #+#    #+#             */
-/*   Updated: 2021/06/09 17:12:10 by alero            ###   ########.fr       */
+/*   Updated: 2021/06/18 18:32:58 by eniini           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/wolf.h"
+#include "wolf.h"
 
 /*
  *	Allocates 2d character array,

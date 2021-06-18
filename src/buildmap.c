@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   buildmap.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alero <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: eniini <eniini@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 10:55:25 by alero             #+#    #+#             */
-/*   Updated: 2021/06/10 16:43:22 by alero            ###   ########.fr       */
+/*   Updated: 2021/06/18 18:31:41 by eniini           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/wolf.h"
+#include "wolf.h"
 
 /*
  *	Simple mother function for

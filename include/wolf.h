@@ -109,33 +109,34 @@ typedef struct s_map_player
 # define WALL_W	"resources/techwall4_red1.bmp"
 # define WALL_E	"resources/techwall4_ylw1.bmp"
 
-void		ft_print2dcarr(char **arr);
-char		*linetogrid(char *ret, char *out, int x);
+//map logic
 int			readmap(char *str, t_map *s);
 int			checkmap(char *str, t_map *s);
 int			initmap(t_map *s);
 int			buildmap(char *str, t_map *s);
-
+char		*linetogrid(char *ret, char *out, int x);
+//SDL2 utility
 void		init_SDL(t_app *app);
-void		init_player_vars(t_app *app);
-
 void		cleanup(t_app *app);
-void		drawmap(t_map *map, t_app *app);
-
+//draw tools
 void		drawpixel(int x, int y, uint32_t *buffer, uint32_t color);
-
 void		draw_line(t_app *wolf, t_point p0, t_point p1, uint32_t color);
 void		draw_circle(t_app *wolf, t_point p, int r, uint32_t color);
 void		draw_filled_circle(t_app *wolf, t_point p, int r, uint32_t color);
-
-void		raycast(t_app *app, t_map *map);
-
-void		keyevent(t_app *app, SDL_Event *e);
+void		drawmap(t_map *map, t_app *app);
 void		drawplayer(t_app *app, t_map_player *player, t_map *map);
-
-void		fps_counter(t_app *app);
 uint32_t	argb_grayscale(uint32_t c);
 uint32_t	argb_realgrayscale(uint32_t c);
+//raycasting
+void		raycast(t_app *app, t_map *map);
+void		draw_tex_ray(t_app *app, double dist, int ray_i, t_bool side);
+void		draw_flat_ray(t_app *app, double dist, int ray_i, t_bool side);
+//movement
+void		init_player_vars(t_app *app);
+void		keyevent(t_app *app, SDL_Event *e);
 void		check_collision(t_app *app, t_map *map);
+//debugging
+void		ft_print2dcarr(char **arr);
+void		fps_counter(t_app *app);
 
 #endif

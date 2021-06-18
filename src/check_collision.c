@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   check_collision.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alero <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: eniini <eniini@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/04 16:11:41 by alero             #+#    #+#             */
-/*   Updated: 2021/06/17 17:04:38 by alero            ###   ########.fr       */
+/*   Updated: 2021/06/18 18:31:46 by eniini           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/wolf.h"
+#include "wolf.h"
 
 /*
  *			Check collision checks if the player position is inside a wall,

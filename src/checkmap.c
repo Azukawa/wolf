@@ -6,11 +6,11 @@
 /*   By: eniini <eniini@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 10:53:13 by alero             #+#    #+#             */
-/*   Updated: 2021/06/10 14:44:18 by alero            ###   ########.fr       */
+/*   Updated: 2021/06/18 18:31:56 by eniini           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/wolf.h"
+#include "wolf.h"
 
 /*
  *	The first read of map file.

@@ -6,11 +6,11 @@
 /*   By: eniini <eniini@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/27 15:00:19 by alero             #+#    #+#             */
-/*   Updated: 2021/06/08 15:48:06 by alero            ###   ########.fr       */
+/*   Updated: 2021/06/18 18:32:35 by eniini           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/wolf.h"
+#include "wolf.h"
 
 void	drawplayer(t_app *app, t_map_player *player, t_map *map)
 {

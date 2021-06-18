@@ -6,7 +6,7 @@
 /*   By: eniini <eniini@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 11:03:10 by alero             #+#    #+#             */
-/*   Updated: 2021/06/18 17:05:45 by eniini           ###   ########.fr       */
+/*   Updated: 2021/06/18 18:09:05 by eniini           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ static int	define_player_pos(t_map *map, t_app *app)
 /*
 *	Loads given image file into texture data pointer [tex] in given format.
 */
-static SDL_Surface *bitmap_load(SDL_PixelFormat *format, char *file)
+static SDL_Surface	*bitmap_load(SDL_PixelFormat *format, char *file)
 {
 	SDL_Surface		*raw_bmp;
 	SDL_Surface		*result;

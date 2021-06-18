@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   linetogrid.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alero <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: eniini <eniini@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 10:49:59 by alero             #+#    #+#             */
-/*   Updated: 2021/06/01 14:59:07 by alero            ###   ########.fr       */
+/*   Updated: 2021/06/18 18:33:27 by eniini           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/wolf.h"
+#include "wolf.h"
 
 /*
  *	Skips ',' and ' ' characters,

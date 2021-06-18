@@ -6,11 +6,12 @@
 /*   By: eniini <eniini@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/27 10:53:01 by alero             #+#    #+#             */
-/*   Updated: 2021/06/18 18:02:53 by alero            ###   ########.fr       */
+/*   Updated: 2021/06/18 18:33:12 by eniini           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/wolf.h"
+#include "wolf.h"
+
 static void	key_forward(double *new_pos_x, double *new_pos_y, t_app *app)
 {
 	*new_pos_x = app->player.pos_x + cos(app->player.angle * \

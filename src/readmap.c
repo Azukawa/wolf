@@ -6,11 +6,11 @@
 /*   By: eniini <eniini@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 10:52:01 by alero             #+#    #+#             */
-/*   Updated: 2021/06/08 18:39:13 by alero            ###   ########.fr       */
+/*   Updated: 2021/06/18 18:33:38 by eniini           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/wolf.h"
+#include "wolf.h"
 
 /*
  *	The second redthrough of map file.

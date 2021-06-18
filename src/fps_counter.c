@@ -6,11 +6,11 @@
 /*   By: eniini <eniini@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/03 12:54:46 by alero             #+#    #+#             */
-/*   Updated: 2021/06/08 11:14:34 by eniini           ###   ########.fr       */
+/*   Updated: 2021/06/18 18:32:45 by eniini           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/wolf.h"
+#include "wolf.h"
 
 /*
  *		This function keeps track of how many times

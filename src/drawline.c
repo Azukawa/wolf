@@ -6,7 +6,7 @@
 /*   By: eniini <eniini@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/26 13:12:29 by eniini            #+#    #+#             */
-/*   Updated: 2021/06/04 18:38:03 by eniini           ###   ########.fr       */
+/*   Updated: 2021/06/18 18:32:04 by eniini           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 **	Otherwise, just your typical fast line drawing algorithm implementation.
 */
 
-#include "../include/wolf.h"
+#include "wolf.h"
 
 static void	init_startingvalues(t_point p0, int *x, int *y)
 {

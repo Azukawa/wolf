@@ -6,11 +6,11 @@
 /*   By: eniini <eniini@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 11:00:27 by alero             #+#    #+#             */
-/*   Updated: 2021/06/07 14:54:57 by eniini           ###   ########.fr       */
+/*   Updated: 2021/06/18 18:32:21 by eniini           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/wolf.h"
+#include "wolf.h"
 
 /*
 *	Calculates the perceived brightness (luma) of a given color.

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print2dcarr.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alero <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: eniini <eniini@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 10:49:01 by alero             #+#    #+#             */
-/*   Updated: 2021/06/01 13:59:27 by alero            ###   ########.fr       */
+/*   Updated: 2021/06/18 18:32:50 by eniini           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/wolf.h"
+#include "wolf.h"
 
 /*
  *	Simple 2d char array printer using prinf
