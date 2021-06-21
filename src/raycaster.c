@@ -6,7 +6,7 @@
 /*   By: eniini <eniini@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/27 13:53:10 by eniini            #+#    #+#             */
-/*   Updated: 2021/06/18 19:25:46 by eniini           ###   ########.fr       */
+/*   Updated: 2021/06/21 17:31:05 by alero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,20 +54,11 @@ static void	calc_texpos(t_app *app, t_bool side, double dist, t_fpoint *r)
 {
 	double	prec_x;
 
-	if (!side && (app->rc.ray_d < 270 && app->rc.ray_d > 90))
-		prec_x = -app->player.pos_y + dist * (app->rc.ray_d * RAD_CON);
-	else if (!side)
-		prec_x = app->player.pos_y + dist * (app->rc.ray_d * RAD_CON);
-		//this is the one that works
-	else if ((app->rc.ray_d > 180 && app->rc.ray_d < 360) || app->rc.ray_d < 0)
-		prec_x = app->player.pos_x + dist * (app->rc.ray_d * RAD_CON);
+	if(side)
+		prec_x = app->player.pos_x + dist * cos(app->rc.ray_d * RAD_CON);
 	else
-		prec_x = app->player.pos_x - dist * (app->rc.ray_d * RAD_CON);
-	//if (!side)
-	//	prec_x = app->player.pos_y + dist * (app->rc.ray_d * RAD_CON);
-	//else
-	//	prec_x = app->player.pos_x + dist * (app->rc.ray_d * RAD_CON);
-	prec_x -= (floor)(prec_x);
+		prec_x = app->player.pos_y + dist * sin(app->rc.ray_d * RAD_CON);
+	prec_x -= floor(prec_x);
 	app->rc.tex_x = (int)(prec_x * (double)WALLTEX_W);
 	r->x = r->x; //werror avoidance
 }
@@ -94,11 +85,13 @@ void	raycast(t_app *app, t_map *map)
 		app->rc.ray_sin = sin(app->rc.ray_d * RAD_CON) / app->rc.precision;
 		side = project_ray(app, map, &ray);
 		dist = sqrt((app->player.pos_x - ray.x) * (app->player.pos_x - ray.x)
-				+ (app->player.pos_y - ray.y) * (app->player.pos_y - ray.y));
+			+ (app->player.pos_y - ray.y) * (app->player.pos_y - ray.y));
 		dist *= cos((app->rc.ray_d - app->player.angle) * RAD_CON);
-		calc_texpos(app, side, dist, &ray);
 		if (app->draw_tex == TRUE)
+		{
+			calc_texpos(app, side, dist, &ray);
 			draw_tex_ray(app, dist, ray_i, side);
+		}
 		else
 			draw_flat_ray(app, dist, ray_i, side);
 		app->rc.ray_d += app->rc.raycast_unit;

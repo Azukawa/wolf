@@ -6,7 +6,7 @@
 /*   By: eniini <eniini@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 11:03:10 by alero             #+#    #+#             */
-/*   Updated: 2021/06/18 18:09:05 by eniini           ###   ########.fr       */
+/*   Updated: 2021/06/21 17:43:43 by alero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,27 +97,27 @@ static void	load_textures(t_app *app)
 
 int	main(int	argc, char	**argv)
 {
-	t_map			*s;
-	t_app			*app;
+	t_map			s;
+	t_app			app;
 	SDL_Event		e;
 	int				x;
 
 	if (argc != 2)
 		ft_getout("Wrong number of arguments.");
-	s = ft_memalloc(sizeof(*s));
-	app = ft_memalloc(sizeof(*app));
-	init_SDL(app);
-	init_player_vars(app);
-	x = buildmap(argv[1], s);
-	x = define_player_pos(s, app);
-	if (x == -1 || s->w < 3 || s->h < 3)
+//	s = ft_memalloc(sizeof(*s));
+//	app = ft_memalloc(sizeof(*app));
+	init_SDL(&app);
+	init_player_vars(&app);
+	x = buildmap(argv[1], &s);
+	x = define_player_pos(&s, &app);
+	if (x == -1 || s.w < 3 || s.h < 3)
 		ft_getout("File does not exist or is of incorrect type.");
-	load_textures(app);
-	mainloop(s, app, &e);
-	cleanup(app);
-	ft_free_arr(s->map);
-	free(s);
-	free(app->buffer);
-	free(app);
+	load_textures(&app);
+	mainloop(&s, &app, &e);
+	cleanup(&app);
+	ft_free_arr(s.map);
+//	free(s);
+	free(app.buffer);
+//	free(app);
 	return (1);
 }
