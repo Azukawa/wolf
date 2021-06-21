@@ -6,7 +6,7 @@
 /*   By: eniini <eniini@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/27 13:53:10 by eniini            #+#    #+#             */
-/*   Updated: 2021/06/18 18:17:34 by eniini           ###   ########.fr       */
+/*   Updated: 2021/06/18 19:25:46 by eniini           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,8 @@ static void	calc_texpos(t_app *app, t_bool side, double dist, t_fpoint *r)
 	if (!side && (app->rc.ray_d < 270 && app->rc.ray_d > 90))
 		prec_x = -app->player.pos_y + dist * (app->rc.ray_d * RAD_CON);
 	else if (!side)
-		prec_x = app->player.pos_y + dist * (app->rc.ray_d * RAD_CON); //this is the one that works
+		prec_x = app->player.pos_y + dist * (app->rc.ray_d * RAD_CON);
+		//this is the one that works
 	else if ((app->rc.ray_d > 180 && app->rc.ray_d < 360) || app->rc.ray_d < 0)
 		prec_x = app->player.pos_x + dist * (app->rc.ray_d * RAD_CON);
 	else
