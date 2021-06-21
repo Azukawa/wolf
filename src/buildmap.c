@@ -6,7 +6,7 @@
 /*   By: eniini <eniini@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 10:55:25 by alero             #+#    #+#             */
-/*   Updated: 2021/06/18 18:31:41 by eniini           ###   ########.fr       */
+/*   Updated: 2021/06/21 18:51:19 by alero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ int	buildmap(char *str, t_map *s)
 {	
 	int	x;
 
+	s->w = 0;
 	x = ismap(str);
 	if (x == -1)
 		return (-1);
