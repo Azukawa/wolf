@@ -6,7 +6,7 @@
 /*   By: eniini <eniini@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/18 18:13:54 by eniini            #+#    #+#             */
-/*   Updated: 2021/06/21 11:12:37 by eniini           ###   ########.fr       */
+/*   Updated: 2021/06/21 18:19:28 by eniini           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,51 @@ static void	draw_tex_line(t_app *app, int ray_i, double dist, SDL_Surface *tex)
 }
 
 /*
+*	Calculates exact x-position of the ray in relation to the texture of
+*	the wall being hit.
+*/
+static void	calc_texpos(t_app *app, t_bool side, double dist)
+{
+	double	prec_x;
+
+	if (side)
+		prec_x = app->player.pos_x + dist * cos(app->rc.ray_d * RAD_CON);
+	else
+		prec_x = app->player.pos_y + dist * sin(app->rc.ray_d * RAD_CON);
+	prec_x -= floor(prec_x);
+	app->rc.tex_x = (int)(prec_x * (double)WALLTEX_W);
+}
+
+/*
+*	Draws all of the visible pre-designated textures onto the
+*	corresponding walls.
+*/
+void	draw_tex_ray(t_app *app, double dist, int ray_i, t_bool side)
+{
+	int	wall_s;
+	int	wall_e;
+	int	offset;
+
+	calc_texpos(app, side, dist);
+	offset = (int)(HALF_SH / dist);
+	app->rc.wall_s = (-offset) + HALF_SH;
+	app->rc.wall_e = offset + HALF_SH;
+	wall_s = ft_clamp_i(HALF_SH - offset, 1, SCREEN_HEIGHT - 1);
+	wall_e = ft_clamp_i(HALF_SH + offset, 1, SCREEN_HEIGHT - 1);
+	draw_line(app, (t_point){1, ray_i}, (t_point){wall_s, ray_i}, DEV_CEIL);
+	if (!side && (app->rc.ray_d < 270 && app->rc.ray_d > 90))
+		draw_tex_line(app, ray_i, dist, app->texlib.walltex_e);
+	else if (!side)
+		draw_tex_line(app, ray_i, dist, app->texlib.walltex_w);
+	else if ((app->rc.ray_d > 180 && app->rc.ray_d < 360) || app->rc.ray_d < 0)
+		draw_tex_line(app, ray_i, dist, app->texlib.walltex_s);
+	else
+		draw_tex_line(app, ray_i, dist, app->texlib.walltex_n);
+	draw_line(app, (t_point){wall_e, ray_i},
+		(t_point){SCREEN_HEIGHT, ray_i}, DEV_FLOOR);
+}
+
+/*
 *	Paints each direction of raycasted walls with an unique color.
 *	Walls are additionally shaded based on their distance to the player
 *	for an additional depth effect.
@@ -75,33 +120,6 @@ void	draw_flat_ray(t_app *app, double dist, int ray_i, t_bool side)
 	else
 		draw_line(app, (t_point){wall_s, ray_i}, (t_point){wall_e, ray_i},
 			ft_argb_lerp(DEV_WALL_N, SHADE, dist * 0.1));
-	draw_line(app, (t_point){wall_e, ray_i},
-		(t_point){SCREEN_HEIGHT, ray_i}, DEV_FLOOR);
-}
-
-/*
-*	Draws all of the pre-designated textures onto the corresponding walls.
-*/
-void	draw_tex_ray(t_app *app, double dist, int ray_i, t_bool side)
-{
-	int	wall_s;
-	int	wall_e;
-	int	offset;
-
-	offset = (int)(HALF_SH / dist);
-	app->rc.wall_s = (-offset) + HALF_SH;
-	app->rc.wall_e = offset + HALF_SH;
-	wall_s = ft_clamp_i(HALF_SH - offset, 1, SCREEN_HEIGHT - 1);
-	wall_e = ft_clamp_i(HALF_SH + offset, 1, SCREEN_HEIGHT - 1);
-	draw_line(app, (t_point){1, ray_i}, (t_point){wall_s, ray_i}, DEV_CEIL);
-	if (!side && (app->rc.ray_d < 270 && app->rc.ray_d > 90))
-		draw_tex_line(app, ray_i, dist, app->texlib.walltex_e);
-	else if (!side)
-		draw_tex_line(app, ray_i, dist, app->texlib.walltex_w);
-	else if ((app->rc.ray_d > 180 && app->rc.ray_d < 360) || app->rc.ray_d < 0)
-		draw_tex_line(app, ray_i, dist, app->texlib.walltex_s);
-	else
-		draw_tex_line(app, ray_i, dist, app->texlib.walltex_n);
 	draw_line(app, (t_point){wall_e, ray_i},
 		(t_point){SCREEN_HEIGHT, ray_i}, DEV_FLOOR);
 }

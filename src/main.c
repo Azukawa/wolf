@@ -6,7 +6,7 @@
 /*   By: eniini <eniini@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 11:03:10 by alero             #+#    #+#             */
-/*   Updated: 2021/06/21 17:43:43 by alero            ###   ########.fr       */
+/*   Updated: 2021/06/21 18:13:03 by eniini           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,8 +104,6 @@ int	main(int	argc, char	**argv)
 
 	if (argc != 2)
 		ft_getout("Wrong number of arguments.");
-//	s = ft_memalloc(sizeof(*s));
-//	app = ft_memalloc(sizeof(*app));
 	init_SDL(&app);
 	init_player_vars(&app);
 	x = buildmap(argv[1], &s);
@@ -116,8 +114,6 @@ int	main(int	argc, char	**argv)
 	mainloop(&s, &app, &e);
 	cleanup(&app);
 	ft_free_arr(s.map);
-//	free(s);
 	free(app.buffer);
-//	free(app);
 	return (1);
 }

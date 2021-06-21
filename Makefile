@@ -2,7 +2,7 @@ NAME	=	wolf3d
 
 #compiler
 CC	=	gcc
-CFLAGS	=	-Wall -Wextra -Werror -g
+CFLAGS	=	-Wall -Wextra -Werror -O3
 
 #sources & object files
 SRC_DIR =	./src/

@@ -6,7 +6,7 @@
 /*   By: eniini <eniini@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/27 13:53:10 by eniini            #+#    #+#             */
-/*   Updated: 2021/06/21 17:31:05 by alero            ###   ########.fr       */
+/*   Updated: 2021/06/21 18:16:43 by eniini           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,23 +47,6 @@ static t_bool	project_ray(t_app *app, t_map *map, t_fpoint *ray)
 }
 
 /*
-*	Calculates exact x-position of the ray in relation to the texture of
-*	the wall being hit.
-*/
-static void	calc_texpos(t_app *app, t_bool side, double dist, t_fpoint *r)
-{
-	double	prec_x;
-
-	if(side)
-		prec_x = app->player.pos_x + dist * cos(app->rc.ray_d * RAD_CON);
-	else
-		prec_x = app->player.pos_y + dist * sin(app->rc.ray_d * RAD_CON);
-	prec_x -= floor(prec_x);
-	app->rc.tex_x = (int)(prec_x * (double)WALLTEX_W);
-	r->x = r->x; //werror avoidance
-}
-
-/*
 *	Projects rays for the length of the player's FOV using trigonometry
 *	and calculates the distance between ray's origin and the wall it hits.
 */
@@ -85,13 +68,10 @@ void	raycast(t_app *app, t_map *map)
 		app->rc.ray_sin = sin(app->rc.ray_d * RAD_CON) / app->rc.precision;
 		side = project_ray(app, map, &ray);
 		dist = sqrt((app->player.pos_x - ray.x) * (app->player.pos_x - ray.x)
-			+ (app->player.pos_y - ray.y) * (app->player.pos_y - ray.y));
+				+ (app->player.pos_y - ray.y) * (app->player.pos_y - ray.y));
 		dist *= cos((app->rc.ray_d - app->player.angle) * RAD_CON);
 		if (app->draw_tex == TRUE)
-		{
-			calc_texpos(app, side, dist, &ray);
 			draw_tex_ray(app, dist, ray_i, side);
-		}
 		else
 			draw_flat_ray(app, dist, ray_i, side);
 		app->rc.ray_d += app->rc.raycast_unit;
