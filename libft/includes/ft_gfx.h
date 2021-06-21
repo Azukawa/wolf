@@ -6,7 +6,7 @@
 /*   By: eniini <eniini@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/29 17:23:17 by eniini            #+#    #+#             */
-/*   Updated: 2021/06/03 18:37:56 by eniini           ###   ########.fr       */
+/*   Updated: 2021/06/21 19:05:17 by eniini           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,8 @@ int				ft_create_bmp(char *filename, t_gfxinfo *info);
 t_gfxinfo		*ft_load_bmp(const char *imagepath);
 
 int				ft_hueshift(int c, double p);
+uint32_t		ft_argb_grayscale(uint32_t c);
+uint32_t		ft_argb_realgrayscale(uint32_t c);
 
 t_gfxinfo		*ft_init_1d_info(int w, int h, int bpp, unsigned char *c);
 t_gfxinfo		*ft_init_2d_info(int w, int h, int bpp, unsigned char **c);

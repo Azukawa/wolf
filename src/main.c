@@ -6,7 +6,7 @@
 /*   By: eniini <eniini@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 11:03:10 by alero             #+#    #+#             */
-/*   Updated: 2021/06/21 18:13:03 by eniini           ###   ########.fr       */
+/*   Updated: 2021/06/21 18:59:22 by eniini           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,8 @@ int	main(int	argc, char	**argv)
 	SDL_Event		e;
 	int				x;
 
+	ft_bzero(&s, sizeof(t_map));
+	ft_bzero(&app, sizeof(t_app));
 	if (argc != 2)
 		ft_getout("Wrong number of arguments.");
 	init_SDL(&app);

@@ -125,8 +125,6 @@ void		draw_circle(t_app *wolf, t_point p, int r, uint32_t color);
 void		draw_filled_circle(t_app *wolf, t_point p, int r, uint32_t color);
 void		drawmap(t_map *map, t_app *app);
 void		drawplayer(t_app *app, t_map_player *player, t_map *map);
-uint32_t	argb_grayscale(uint32_t c);
-uint32_t	argb_realgrayscale(uint32_t c);
 //raycasting
 void		raycast(t_app *app, t_map *map);
 void		draw_tex_ray(t_app *app, double dist, int ray_i, t_bool side);
@@ -136,7 +134,6 @@ void		init_player_vars(t_app *app);
 void		keyevent(t_app *app, SDL_Event *e);
 void		check_collision(t_app *app, t_map *map);
 //debugging
-void		ft_print2dcarr(char **arr);
 void		fps_counter(t_app *app);
 
 #endif

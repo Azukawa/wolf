@@ -13,7 +13,6 @@ SRC_LIST =	main.c \
 		cleanup.c \
 		drawmap.c \
 		drawpixel.c \
-		ft_print2dcarr.c \
 		initmap.c \
 		initSDL.c \
 		linetogrid.c \
